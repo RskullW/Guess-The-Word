@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView
 
 class OutlineTextView(context: Context, attrs: AttributeSet?) : AppCompatTextView(context, attrs) {
     private val outlineColor = Color.BLACK
-    private val outlineWidth = 5.0f
+    private val outlineWidth = 10.0f
 
     override fun onDraw(canvas: Canvas) {
         val textColor = currentTextColor
