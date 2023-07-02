@@ -2,125 +2,245 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/menu_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/menu_background"
     tools:context=".MainActivity">
 
-    <com.guesstheword.text.Outline.OutlineTextView
-        android:id="@+id/mainTitle"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:fontFamily="@font/inter_bold"
-        android:text="GUESS THE WORD"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/text_size_large28"
-        android:textStyle="bold"
-        app:fontFamily="@font/inter_bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.031" />
-
-    <ImageView
-        android:id="@+id/buttonRules"
-        android:layout_width="43dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/mainTitle"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/rules" />
-
-    <ImageView
-        android:id="@+id/buttonAccount"
-        android:layout_width="43dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="6dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.407"
-        app:layout_constraintStart_toEndOf="@+id/mainTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/account" />
-
-    <FrameLayout
-        android:id="@+id/frameLayoutSelectMode"
-        android:layout_width="341dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/rounded_game_mode_background"
+        android:layout_marginTop="60dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainTitle">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/buttonRules"
+            android:layout_width="43dp"
+            android:layout_height="55dp"
+            android:layout_marginRight="16dp"
+            app:srcCompat="@drawable/rules" />
 
         <com.guesstheword.text.Outline.OutlineTextView
-            android:id="@+id/selectMode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp"
+            android:id="@+id/mainTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:fontFamily="@font/inter_bold"
-            android:text="Выбор режима"
+            android:gravity="center_horizontal"
+            android:text="GUESS THE WORD"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
-            android:textSize="@dimen/text_size_large24"
+            android:textSize="@dimen/text_size_large28"
             android:textStyle="bold"
-            app:fontFamily="@font/inter_thin"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.504"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.184" />
+            app:fontFamily="@font/inter_bold" />
 
-    </FrameLayout>
+        <ImageView
+            android:id="@+id/buttonAccount"
+            android:layout_width="43dp"
+            android:layout_height="55dp"
+            android:layout_marginLeft="16dp"
+            app:srcCompat="@drawable/account" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonRandomWord"
-        android:layout_width="292dp"
-        android:layout_height="63dp"
-        android:layout_margin="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_selector"
-        android:fontFamily="@font/inter_thin"
-        android:padding="16dp"
-        android:text="Случайные слова"
-        android:textColor="#67131313"
-        android:textSize="@dimen/text_size_large16"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayoutSelectMode" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-    <Button
-        android:id="@+id/buttonRandomWord2"
-        android:layout_width="292dp"
-        android:layout_height="63dp"
-        android:layout_margin="8dp"
-        android:background="@drawable/button_selector"
-        android:fontFamily="@font/inter_thin"
-        android:padding="16dp"
-        android:text="5 букв"
-        android:textColor="#67131313"
-        android:textSize="@dimen/text_size_large16"
-        android:textStyle="bold"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRandomWord" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/frameLayoutSelectMode"
+                    android:layout_width="341dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/rounded_game_mode_background">
+
+                    <com.guesstheword.text.Outline.OutlineTextView
+                        android:id="@+id/selectMode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Выбор режима"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="@dimen/text_size_large24"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonRandomWord1"
+                        android:layout_width="285dp"
+                        android:layout_height="63dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/button_selector"
+                        android:fontFamily="@font/inter_thin"
+                        android:padding="16dp"
+                        android:text="Случайные слова"
+                        android:textColor="#67131313"
+                        android:textSize="@dimen/text_size_large16"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/buttonRandomWord2"
+                    android:layout_width="141dp"
+                    android:layout_height="63dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/button_selector"
+                    android:fontFamily="@font/inter_thin"
+                    android:padding="16dp"
+                    android:text="5 букв"
+                    android:textColor="#67131313"
+                    android:textSize="@dimen/text_size_large16"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/buttonRandomWord3"
+                    android:layout_width="141dp"
+                    android:layout_height="63dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_selector"
+                    android:fontFamily="@font/inter_thin"
+                    android:padding="16dp"
+                    android:text="6 букв"
+                    android:textColor="#67131313"
+                    android:textSize="@dimen/text_size_large16"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/buttonRandomWord4"
+                    android:layout_width="141dp"
+                    android:layout_height="63dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="24dp"
+                    android:background="@drawable/button_selector"
+                    android:fontFamily="@font/inter_thin"
+                    android:padding="16dp"
+                    android:text="7 букв"
+                    android:textColor="#67131313"
+                    android:textSize="@dimen/text_size_large16"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/buttonRandomWord5"
+                    android:layout_width="141dp"
+                    android:layout_height="63dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/button_selector"
+                    android:fontFamily="@font/inter_thin"
+                    android:padding="16dp"
+                    android:text="8 букв"
+                    android:textColor="#67131313"
+                    android:textSize="@dimen/text_size_large16"
+                    android:textStyle="bold"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/frameLayoutSelectCategory"
+                    android:layout_width="341dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_game_mode_background">
+
+                    <com.guesstheword.text.Outline.OutlineTextView
+                        android:id="@+id/selectCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Выбор категории"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="@dimen/text_size_large24"
+                        android:textStyle="bold" />
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/buttonRandomCategory1"
+                        android:layout_width="285dp"
+                        android:layout_height="63dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/button_selector"
+                        android:fontFamily="@font/inter_thin"
+                        android:padding="16dp"
+                        android:text="Общая категория"
+                        android:textColor="#67131313"
+                        android:textSize="@dimen/text_size_large16"
+                        android:textStyle="bold"
+                        app:backgroundTint="@null" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buttonContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"></LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

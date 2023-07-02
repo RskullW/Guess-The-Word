@@ -4,4 +4,7 @@
     <dimen name="text_size_large24">24dp</dimen>
     <dimen name="text_size_large20">20dp</dimen>
     <dimen name="text_size_large16">16dp</dimen>
+    <dimen name="button_width">141dp</dimen>
+    <dimen name="button_height">63dp</dimen>
+
 </resources>
