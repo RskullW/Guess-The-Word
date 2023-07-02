@@ -1,19 +1,16 @@
 package com.example.guesstheword
 
-import android.graphics.Color
-import android.graphics.Typeface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.guesstheword.button.state.ButtonState
 
 class MainActivity : AppCompatActivity() {
     private lateinit var buttonReady: Button
@@ -127,6 +124,12 @@ class MainActivity : AppCompatActivity() {
     }
     private fun initializeButtonReady() {
         buttonReady = findViewById(R.id.buttonStartGame)
+
+        buttonReady.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
         updateButtonVisibility()
 

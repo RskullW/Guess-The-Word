@@ -1,6 +1,7 @@
-package com.example.guesstheword
+package com.guesstheword.button.state
 
 import android.widget.Button
+import com.example.guesstheword.R
 
 class ButtonState(private var _isPressed: Boolean, val button: Button) {
 

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="text_size_large28">28dp</dimen>
-    <dimen name="text_size_large24">24dp</dimen>
-    <dimen name="text_size_large20">20dp</dimen>
-    <dimen name="text_size_large16">16dp</dimen>
+    <dimen name="text_size_large28">28sp</dimen>
+    <dimen name="text_size_large24">24sp</dimen>
+    <dimen name="text_size_large20">20sp</dimen>
+    <dimen name="text_size_large16">16sp</dimen>
+    <dimen name="text_size_large14">14sp</dimen>
+    <dimen name="text_size_large12">12sp</dimen>
     <dimen name="button_width">141dp</dimen>
     <dimen name="button_height">63dp</dimen>
 
