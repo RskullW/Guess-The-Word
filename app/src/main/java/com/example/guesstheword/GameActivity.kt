@@ -1,11 +1,20 @@
 package com.example.guesstheword
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.icu.lang.UCharacter.toLowerCase
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.Gravity
+import android.view.LayoutInflater
+import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.*
+import com.anim.toast.CustomToast
 import kotlin.concurrent.thread
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -13,6 +22,7 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
+import java.time.Duration
 
 class GameActivity : AppCompatActivity() {
     private val answer: String = "ПОСОХ"
@@ -22,6 +32,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var buttonCheck: Button
     private var correctSymbols: MutableMap<Int, Char> = mutableMapOf()
     private var keyboardButton: MutableMap<Char, Button> = mutableMapOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -104,17 +115,28 @@ class GameActivity : AppCompatActivity() {
             thread {
                 if (userAnswer.length < answer.length) {
                     // TODO: Реализовать всплывающее сообщение об ошибке
-                    Log.d("Word", "Недостаточно букв")
+                    runOnUiThread {
+                        showCustomToast(
+                            this,
+                            5,
+                            "Не хватает букв! Должно быть: ${answer.length} букв!"
+                        )
+                    }
                 } else {
                     if (!isWordSpelledCorrectly(userAnswer)) {
-                        // TODO: Реализовать всплывающее сообщение об ошибке, что такого слова нет в русском языке
-                        Log.d("Word", "Такого слова нет в словаре")
+                        runOnUiThread {
+                            showCustomToast(
+                                this,
+                                5,
+                                "Такого слова нет в нашем словаре!\nПожалуйста, введите существительное в ед.числе, им.падеже. Например, ОБЫСК"
+                            )
+                        }
                     }
 
                     else {
                         runOnUiThread {
                             setLine() // TODO: Реализация победы/поражения или переход на следующую строку
-                        }
+                            }
                     }
                 }
             }
@@ -223,5 +245,12 @@ class GameActivity : AppCompatActivity() {
 
     private fun displayDefeatGame() {
 
+    }
+
+    fun showCustomToast(context: Context, duration: Int, message: String) {
+        val layout: FrameLayout = findViewById<FrameLayout>(R.id.toastFrameLayout)
+        val textView: TextView = layout.findViewById(R.id.toastTextView)
+
+        CustomToast.start(message, layout, textView, this)
     }
 }
