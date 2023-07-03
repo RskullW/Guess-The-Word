@@ -136,7 +136,6 @@ class MainActivity : AppCompatActivity() {
         isSelectMode.observe(this, Observer { updateButtonVisibility() })
         isSelectCategory.observe(this, Observer { updateButtonVisibility() })
     }
-
     private fun updateButtonVisibility() {
         if (isSelectMode.value == true && isSelectCategory.value == true) {
             buttonReady.visibility = if (buttonReady.visibility != View.VISIBLE) {
@@ -154,7 +153,6 @@ class MainActivity : AppCompatActivity() {
             } else buttonReady.visibility
         }
     }
-
     private fun createNewLinearLine(index: Int):LinearLayout? {
         if (index % 2 == 0) {
             val linearLayout = LinearLayout(this)

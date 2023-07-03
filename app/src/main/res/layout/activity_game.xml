@@ -9,9 +9,14 @@
     tools:context=".GameActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/keyBoardLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/AppBarLayout"
@@ -53,584 +58,599 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/firstLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"></LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/secondLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/thirdLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"></LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fourLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"></LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/fiveLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"></LinearLayout>
-
         <TableLayout
-            android:id="@+id/keyBoardLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="16dp"
-            android:stretchColumns="*">
+            android:id="@+id/fieldContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="40dp">
 
             <TableRow
-                android:id="@+id/firstRowKeyboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="27dp"
-                android:layout_marginRight="27dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/key1_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-
-                    android:layout_weight="2"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Й"
-                    android:padding="8dp"
-                    android:text="Й"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ц"
-                    android:padding="8dp"
-                    android:text="Ц"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка К"
-                    android:padding="8dp"
-                    android:text="У"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка К"
-                    android:padding="8dp"
-                    android:text="К"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Е"
-                    android:padding="8dp"
-                    android:text="Е"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Н"
-                    android:padding="8dp"
-                    android:text="Н"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Г"
-                    android:padding="8dp"
-                    android:text="Г"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ш"
-                    android:padding="8dp"
-                    android:text="Ш"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Щ"
-                    android:padding="8dp"
-                    android:text="Щ"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Щ"
-                    android:padding="8dp"
-                    android:text="Щ"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка З"
-                    android:padding="8dp"
-                    android:text="З"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Х"
-                    android:padding="8dp"
-                    android:text="Х"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key1_13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ъ"
-                    android:padding="8dp"
-                    android:text="Ъ"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-            </TableRow>
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <TableRow
-                android:id="@+id/secondRowKeyboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="27dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="27dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/key2_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ф"
-                    android:padding="8dp"
-                    android:text="Ф"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ы"
-                    android:padding="8dp"
-                    android:text="Ы"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка В"
-                    android:padding="8dp"
-                    android:text="В"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка А"
-                    android:padding="8dp"
-                    android:text="А"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка П"
-                    android:padding="8dp"
-                    android:text="П"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Р"
-                    android:padding="8dp"
-                    android:text="Р"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка О"
-                    android:padding="8dp"
-                    android:text="О"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Л"
-                    android:padding="8dp"
-                    android:text="Л"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Д"
-                    android:padding="8dp"
-                    android:text="Д"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ж"
-                    android:padding="8dp"
-                    android:text="Ж"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key2_11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Э"
-                    android:padding="8dp"
-                    android:text="Э"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-            </TableRow>
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <TableRow
-                android:id="@+id/thirdRowKeyboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="27dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="27dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1">
-
-                <Button
-                    android:id="@+id/key3_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="2"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Я"
-                    android:padding="8dp"
-                    android:text="Я"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ч"
-                    android:padding="8dp"
-                    android:text="Ч"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка С"
-                    android:padding="8dp"
-                    android:text="С"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка М"
-                    android:padding="8dp"
-                    android:text="М"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка И"
-                    android:padding="8dp"
-                    android:text="И"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Т"
-                    android:padding="8dp"
-                    android:text="Т"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ь"
-                    android:padding="8dp"
-                    android:text="Ь"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Б"
-                    android:padding="8dp"
-                    android:text="Б"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <Button
-                    android:id="@+id/key3_9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_button_background"
-                    android:contentDescription="Кнопка Ю"
-                    android:padding="8dp"
-                    android:text="Ю"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-
-                <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/keyboard_button_background">
-
-                    <ImageButton
-                        android:id="@+id/key3_10"
-                        android:layout_width="49dp"
-                        android:layout_height="27dp"
-                        android:layout_gravity="center"
-                        android:background="@null"
-                        android:backgroundTint="@null"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/back_row" />
-                </FrameLayout>
-            </TableRow>
+                android:id="@+id/row3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <TableRow
-                android:id="@+id/buttonCheckLine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="27dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginRight="27dp"
-                android:layout_marginBottom="2dp"
-                android:layout_weight="1">
+                android:id="@+id/row4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
-                <Button
-                    android:id="@+id/buttonCheckWord"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="1dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/keyboard_check_button_background"
-                    android:contentDescription="Проверить слово"
-                    android:padding="8dp"
-                    android:text="ПРОВЕРИТЬ СЛОВО"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large12"
-                    app:backgroundTint="@null" />
-            </TableRow>
+            <TableRow
+                android:id="@+id/row5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <TableRow
+                android:id="@+id/row6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
         </TableLayout>
 
 
     </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/keyBoardLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginBottom="20dp"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:id="@+id/firstRowKeyboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="2dp">
+
+            <Button
+                android:id="@+id/key1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+
+                android:layout_weight="2"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Й"
+                android:padding="8dp"
+                android:text="Й"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ц"
+                android:padding="8dp"
+                android:text="Ц"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка К"
+                android:padding="8dp"
+                android:text="У"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка К"
+                android:padding="8dp"
+                android:text="К"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Е"
+                android:padding="8dp"
+                android:text="Е"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Н"
+                android:padding="8dp"
+                android:text="Н"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Г"
+                android:padding="8dp"
+                android:text="Г"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ш"
+                android:padding="8dp"
+                android:text="Ш"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Щ"
+                android:padding="8dp"
+                android:text="Щ"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Щ"
+                android:padding="8dp"
+                android:text="Щ"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка З"
+                android:padding="8dp"
+                android:text="З"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Х"
+                android:padding="8dp"
+                android:text="Х"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key1_13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ъ"
+                android:padding="8dp"
+                android:text="Ъ"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/secondRowKeyboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="2dp">
+
+            <Button
+                android:id="@+id/key2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="2"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ф"
+                android:padding="8dp"
+                android:text="Ф"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ы"
+                android:padding="8dp"
+                android:text="Ы"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка В"
+                android:padding="8dp"
+                android:text="В"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка А"
+                android:padding="8dp"
+                android:text="А"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка П"
+                android:padding="8dp"
+                android:text="П"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Р"
+                android:padding="8dp"
+                android:text="Р"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка О"
+                android:padding="8dp"
+                android:text="О"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Л"
+                android:padding="8dp"
+                android:text="Л"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Д"
+                android:padding="8dp"
+                android:text="Д"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ж"
+                android:padding="8dp"
+                android:text="Ж"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key2_11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Э"
+                android:padding="8dp"
+                android:text="Э"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/thirdRowKeyboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="2dp">
+
+            <Button
+                android:id="@+id/key3_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="2"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Я"
+                android:padding="8dp"
+                android:text="Я"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ч"
+                android:padding="8dp"
+                android:text="Ч"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка С"
+                android:padding="8dp"
+                android:text="С"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка М"
+                android:padding="8dp"
+                android:text="М"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка И"
+                android:padding="8dp"
+                android:text="И"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Т"
+                android:padding="8dp"
+                android:text="Т"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ь"
+                android:padding="8dp"
+                android:text="Ь"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Б"
+                android:padding="8dp"
+                android:text="Б"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/key3_9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_button_background"
+                android:contentDescription="Кнопка Ю"
+                android:padding="8dp"
+                android:text="Ю"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/keyboard_button_background">
+
+                <ImageButton
+                    android:id="@+id/key3_10"
+                    android:layout_width="49dp"
+                    android:layout_height="27dp"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:backgroundTint="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/back_row" />
+            </FrameLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/buttonCheckLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginRight="27dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/buttonCheckWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/keyboard_check_button_background"
+                android:contentDescription="Проверить слово"
+                android:padding="8dp"
+                android:text="ПРОВЕРИТЬ СЛОВО"
+                android:textColor="#000000"
+                android:textSize="@dimen/text_size_large12"
+                app:backgroundTint="@null" />
+        </TableRow>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

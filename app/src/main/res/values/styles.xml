@@ -26,4 +26,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:backgroundTint">@null</item>
     </style>
+    <style name="TextField" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_size_large24</item>
+        <item name="android:fontFamily">@font/inter_thin</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>
