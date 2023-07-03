@@ -1,15 +1,17 @@
 package com.example.guesstheword
 
 import android.content.Context
-import android.graphics.Typeface
-import android.util.TypedValue
-import android.view.Gravity
-import android.view.ViewGroup
+import android.graphics.drawable.TransitionDrawable
+import android.text.InputFilter
+import android.text.InputType
+import android.view.*
+import android.view.animation.AlphaAnimation
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
-import androidx.core.content.res.ResourcesCompat
+import androidx.core.content.ContextCompat
 
 class GameField(
     private val maxColumns: Int,
@@ -24,7 +26,11 @@ class GameField(
     private var gameField: TableLayout
 
 ) {
-
+    private var numberLine: UShort = 1U
+    var nowRow: Int = 1
+        private set
+    var nowColumn: Int = 1
+        private set
     init {
         createGameField()
     }
@@ -35,9 +41,9 @@ class GameField(
 
             for (column in 1..maxColumns) {
                 val cellLayout = createCellLayout()
-                val textView = createTextView()
+                val editText = createEditText(row, column)
 
-                cellLayout.addView(textView)
+                cellLayout.addView(editText)
                 rowLayout.addView(cellLayout)
             }
         }
@@ -67,28 +73,150 @@ class GameField(
         return cellLayout
     }
 
-    private fun createTextView(): TextView {
-        val textView = TextView(context)
+    private fun createEditText(row: Int, column: Int): EditText {
+        val editText = EditText(context)
         val textLayoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        textView.layoutParams = textLayoutParams
-        textView.gravity = Gravity.CENTER
-        textView.text = ""
-        textView.setTextAppearance(context, R.style.TextField)
-        return textView
+        editText.layoutParams = textLayoutParams
+        editText.gravity = Gravity.CENTER
+        editText.inputType = InputType.TYPE_NULL
+        editText.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(1))
+        editText.maxLines = 1
+        editText.setTextAppearance(context, R.style.EditTextField)
+        editText.isCursorVisible = true
+        editText.contentDescription = "$row$column"
+
+        if (row != numberLine.toInt()) {
+            editText.isEnabled = false
+        }
+
+        editText.setOnTouchListener { _, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                nowRow = editText.contentDescription.toString().toInt()/10
+                nowColumn = editText.contentDescription.toString().toInt()%10
+            }
+            false
+        }
+        editText.requestFocus()
+        return editText
+    }
+    private fun disableAllLine() {
+        for (row in 1..maxRows) {
+            for (column in 1..maxColumns) {
+                val rowLayout = getRowLayout(row)
+                val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+                val editText = cellLayout?.getChildAt(0) as? EditText
+
+                editText?.isEnabled = false
+            }
+        }
+    }
+    fun setStyleField(row: Int, column: Int, fieldState: FieldState) {
+        val rowLayout = getRowLayout(row)
+        val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+
+        val currentBackground = cellLayout?.background
+        val newBackground = when (fieldState) {
+            FieldState.CORRECT -> ContextCompat.getDrawable(context, R.drawable.field_correct)
+            FieldState.INCORRECT -> ContextCompat.getDrawable(context, R.drawable.field_uncorrect)
+            FieldState.POSSIBLY -> ContextCompat.getDrawable(context, R.drawable.field_possibly)
+            else -> ContextCompat.getDrawable(context, R.drawable.field_standart)
+        }
+
+        if (currentBackground != null && newBackground != null) {
+            val duration = 500 // Transition duration in milliseconds
+
+            // Create a TransitionDrawable with the current and new backgrounds
+            val transitionDrawable = TransitionDrawable(arrayOf(currentBackground, newBackground))
+
+            // Set the transition duration for the TransitionDrawable
+            transitionDrawable.isCrossFadeEnabled = true
+            transitionDrawable.startTransition(duration)
+
+            // Set the TransitionDrawable as the background for the cell layout
+            cellLayout?.background = transitionDrawable
+
+            // Start the transition animation
+            transitionDrawable.startTransition(duration)
+
+            // Apply fade-in effect on the new background
+            val alphaAnimation = AlphaAnimation(0f, 1f)
+            alphaAnimation.duration = duration.toLong()
+            cellLayout?.startAnimation(alphaAnimation)
+        } else {
+            // Set the new background directly if there is no current background
+            cellLayout?.setBackgroundResource(
+                when (fieldState) {
+                    FieldState.CORRECT -> R.drawable.field_correct
+                    FieldState.INCORRECT -> R.drawable.field_uncorrect
+                    FieldState.POSSIBLY -> R.drawable.field_possibly
+                    else -> R.drawable.field_standart
+                }
+            )
+        }
     }
 
 
+    fun setNumberLine(row: Int) {
+        disableAllLine()
+
+        val rowLayout = getRowLayout(row)
+        for (column in 1..maxColumns) {
+            val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+            val editText = cellLayout?.getChildAt(0) as? EditText
+
+            editText?.isEnabled = true
+        }
+
+    }
+    fun setTextCorrect(row: Int, column: Int, text: String) {
+        val rowLayout = getRowLayout(row)
+        val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+        val editText = cellLayout?.getChildAt(0) as? EditText
+
+        editText?.setText(text)
+
+        val colorResId = R.color.gray_black
+        editText?.setTextColor(ContextCompat.getColor(context, colorResId))
+
+        editText?.clearFocus()
+    }
     fun setText(row: Int, column: Int, text: String) {
         val rowLayout = getRowLayout(row)
         val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
-        val textView = cellLayout?.getChildAt(0) as? TextView
-        textView?.text = text
+        val editText = cellLayout?.getChildAt(0) as? EditText
+        editText?.setText(text)
+        editText?.clearFocus()
     }
+    fun setText(row: Int, column: Int, text: String, nextColumn: Int) {
+        val rowLayout = getRowLayout(row)
 
-    fun getGameFieldLayout(): TableLayout {
-        return gameField
+        val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+        val cellLayoutNext = rowLayout.getChildAt(nextColumn - 1) as? LinearLayout
+
+        val editText = cellLayout?.getChildAt(0) as? EditText
+        val editTextNext = cellLayoutNext?.getChildAt(0) as? EditText
+
+        editText?.setText(text)
+
+        nowColumn = nextColumn
+
+        editText?.clearFocus()
+        editTextNext?.requestFocus()
+    }
+    fun getWord(row: Int): String {
+        var answerUser: String = ""
+
+        val rowLayout = getRowLayout(row)
+        for (column in 1..maxColumns) {
+            val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+            val editText = cellLayout?.getChildAt(0) as? EditText
+
+            answerUser += editText?.text
+        }
+
+        return answerUser
     }
 }

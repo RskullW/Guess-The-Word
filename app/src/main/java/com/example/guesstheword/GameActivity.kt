@@ -4,24 +4,22 @@ import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TableLayout
-import android.widget.TableRow
+import android.widget.*
 
 class GameActivity : AppCompatActivity() {
     private val answer: String = "ОБЫСК"
     private val maxSymbols: Int = 5
     private var userAnswer: String = ""
     private lateinit var gameField: GameField
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         supportActionBar?.hide()
         initializeButtonBack()
         initializeFields()
+        initializeKeyboard()
     }
-
     private fun initializeButtonBack() {
         var button: ImageButton = findViewById<ImageButton>(R.id.buttonBack)
 
@@ -40,10 +38,10 @@ class GameActivity : AppCompatActivity() {
         val fifthRow = findViewById<TableRow>(R.id.row5)
         val sixthRow = findViewById<TableRow>(R.id.row6)
 
-        val gameField = GameField(
+        gameField = GameField(
             maxColumns = maxSymbols,
             gameField = field,
-            maxRows = 5,
+            maxRows = 6,
             context = this,
             firstRow = firstRow,
             secondRow = secondRow,
@@ -52,8 +50,37 @@ class GameActivity : AppCompatActivity() {
             fifthRow = fifthRow,
             sixthRow = sixthRow,
         )
+
     }
     private fun initializeKeyboard() {
-        // TODO: initialize every key + logic key
+        val keyButtonIds = arrayOf(
+            R.id.key1_1, R.id.key1_2, R.id.key1_3, R.id.key1_4, R.id.key1_5, R.id.key1_6, R.id.key1_7, R.id.key1_8, R.id.key1_9,
+            R.id.key1_10, R.id.key1_11, R.id.key1_12, R.id.key1_13, R.id.key2_1, R.id.key2_2, R.id.key2_3, R.id.key2_4, R.id.key2_5,
+            R.id.key2_6, R.id.key2_7, R.id.key2_8, R.id.key2_9, R.id.key2_10, R.id.key2_11,
+            R.id.key3_1, R.id.key3_2, R.id.key3_3,  R.id.key3_4, R.id.key3_5,R.id.key3_6,R.id.key3_7,R.id.key3_8,R.id.key3_9,
+        )
+
+
+        for (buttonId in keyButtonIds) {
+            val keyButton = findViewById<Button>(buttonId)
+            keyButton.setOnClickListener {
+                val nextColumn = if (gameField.nowColumn != maxSymbols) gameField.nowColumn + 1 else gameField.nowColumn
+                gameField.setText(gameField.nowRow, gameField.nowColumn, keyButton.text.toString(), nextColumn)
+            }
+        }
+
+        val keyButtonBackspaceFrame = findViewById<FrameLayout>(R.id.key3_10Frame)
+        val keyButtonBackspace = findViewById<ImageButton>(R.id.key3_10)
+
+        keyButtonBackspaceFrame.setOnClickListener {
+            val prevColumn = if (gameField.nowColumn - 1 != 0) gameField.nowColumn - 1 else gameField.nowColumn
+            gameField.setText(gameField.nowRow, gameField.nowColumn, "", prevColumn)
+        }
+
+        keyButtonBackspace.setOnClickListener {
+            val prevColumn = if (gameField.nowColumn - 1 != 0) gameField.nowColumn - 1 else gameField.nowColumn
+            gameField.setText(gameField.nowRow, gameField.nowColumn, "", prevColumn)
+        }
+
     }
 }

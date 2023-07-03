@@ -51,6 +51,7 @@
                     android:fontFamily="@font/inter_thin"
                     android:text="УГАДАЙ СЛОВО"
                     android:textAlignment="center"
+                    android:textColor="#000000"
                     android:textSize="@dimen/text_size_large24"
                     android:textStyle="bold" />
 
@@ -113,7 +114,7 @@
         android:layout_gravity="bottom"
         android:layout_marginLeft="27dp"
         android:layout_marginRight="27dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="60dp"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,10 +134,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
 
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Й"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Й"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -150,7 +151,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ц"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Ц"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -164,7 +165,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка К"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="У"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -178,7 +179,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка К"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="К"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -192,7 +193,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Е"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Е"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -206,7 +207,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Н"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Н"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -220,7 +221,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Г"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Г"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -234,7 +235,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ш"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Ш"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -248,7 +249,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Щ"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Щ"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -262,7 +263,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Щ"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Щ"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -276,7 +277,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка З"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="З"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -290,7 +291,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Х"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Х"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -304,7 +305,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ъ"
-                android:padding="8dp"
+                android:padding="5dp"
                 android:text="Ъ"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
@@ -325,7 +326,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ф"
                 android:padding="8dp"
@@ -489,7 +490,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="1dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Я"
                 android:padding="8dp"
@@ -611,6 +612,7 @@
                 app:backgroundTint="@null" />
 
             <FrameLayout
+                android:id="@+id/key3_10Frame"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="@drawable/keyboard_button_background">
@@ -627,30 +629,32 @@
             </FrameLayout>
         </TableRow>
 
-        <TableRow
-            android:id="@+id/buttonCheckLine"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginRight="27dp"
-            android:layout_marginBottom="2dp"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/buttonCheckWord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/keyboard_check_button_background"
-                android:contentDescription="Проверить слово"
-                android:padding="8dp"
-                android:text="ПРОВЕРИТЬ СЛОВО"
-                android:textColor="#000000"
-                android:textSize="@dimen/text_size_large12"
-                app:backgroundTint="@null" />
-        </TableRow>
     </TableLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keyBoardLayout"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Button
+            android:id="@+id/buttonCheckWord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="27dp"
+            android:layout_marginRight="27dp"
+            android:background="@drawable/keyboard_check_button_background"
+            android:fontFamily="@font/inter_thin"
+            android:text="ПРОВЕРИТЬ СЛОВО"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_large20"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
