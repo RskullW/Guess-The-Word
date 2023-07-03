@@ -2,6 +2,7 @@ package com.example.guesstheword
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.TransitionDrawable
 import android.text.Editable
 import android.text.InputFilter
@@ -25,8 +26,8 @@ class GameField(
     private val fifthRow: TableRow,
     private val sixthRow: TableRow,
     private val context: Context,
-    private var gameField: TableLayout
-
+    private var gameField: TableLayout,
+    private var isFinish: Boolean,
 ) {
     private var numberLine: UShort = 1U
     var nowRow: Int = 1
@@ -45,7 +46,16 @@ class GameField(
                 val cellLayout = createCellLayout()
                 val editText = createEditText(row, column)
 
-                cellLayout.addView(editText)
+                if (!isFinish) {
+                    cellLayout.addView(editText)
+                } else {
+                    val emptyView = View(context)
+                    val layoutParams = LinearLayout.LayoutParams(
+                        0,
+                        TableRow.LayoutParams.WRAP_CONTENT
+                    )
+                    cellLayout.addView(emptyView, layoutParams)
+                }
                 rowLayout.addView(cellLayout)
             }
         }
@@ -62,19 +72,30 @@ class GameField(
             else -> throw IllegalArgumentException("Invalid row number: $row")
         }
     }
+    fun setVisibleField(startRow: Int, endRow: Int, isVisible: Boolean) {
+        for (row in startRow..endRow) {
+            val rowLayout = getRowLayout(row)
+
+            for (column in 1..maxColumns) {
+                val rowLayout = getRowLayout(row)
+                val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+
+                cellLayout?.visibility = View.INVISIBLE
+            }
+        }
+    }
     private fun createCellLayout(): LinearLayout {
         val cellLayout = LinearLayout(context)
         val cellLayoutParams = TableRow.LayoutParams(
-            0,
-            TableRow.LayoutParams.MATCH_PARENT,
-            1f
+            if (!isFinish) 0 else TableRow.LayoutParams.WRAP_CONTENT,
+            if (!isFinish) TableRow.LayoutParams.MATCH_PARENT else TableRow.LayoutParams.WRAP_CONTENT,
+            if (!isFinish) 1f else 1f,
         )
         cellLayout.layoutParams = cellLayoutParams
         cellLayout.gravity = Gravity.CENTER
         cellLayout.setBackgroundResource(R.drawable.field_standart)
         return cellLayout
     }
-
     private fun createEditText(row: Int, column: Int): EditText {
         val editText = EditText(context)
         val textLayoutParams = LinearLayout.LayoutParams(
@@ -87,20 +108,22 @@ class GameField(
         editText.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(1))
         editText.maxLines = 1
         editText.setTextAppearance(context, R.style.EditTextField)
-        editText.isCursorVisible = true
+        editText.isCursorVisible = !isFinish
         editText.contentDescription = "$row$column"
         editText.setTextColor(Color.BLACK)
 
-        if (row != numberLine.toInt()) {
+        if (row != numberLine.toInt() || isFinish) {
             editText.isEnabled = false
         }
 
-        editText.setOnTouchListener { _, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                nowRow = editText.contentDescription.toString().toInt()/10
-                nowColumn = editText.contentDescription.toString().toInt()%10
+        if (!isFinish) {
+            editText.setOnTouchListener { _, event ->
+                if (event.action == MotionEvent.ACTION_UP) {
+                    nowRow = editText.contentDescription.toString().toInt() / 10
+                    nowColumn = editText.contentDescription.toString().toInt() % 10
+                }
+                false
             }
-            false
         }
 
         return editText
@@ -120,11 +143,18 @@ class GameField(
             }
         }
     }
+    fun setStyleField(row: Int, column: Int, drawable: Drawable) {
+        val rowLayout = getRowLayout(row)
+        val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+
+        cellLayout?.background = drawable
+    }
     fun setStyleField(row: Int, column: Int, fieldState: FieldState) {
         val rowLayout = getRowLayout(row)
         val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
 
         val currentBackground = cellLayout?.background
+
         val newBackground = when (fieldState) {
             FieldState.CORRECT -> ContextCompat.getDrawable(context, R.drawable.field_correct)
             FieldState.INCORRECT -> ContextCompat.getDrawable(context, R.drawable.field_incorrect)
@@ -164,7 +194,6 @@ class GameField(
             )
         }
     }
-
     fun setNumberLine(row: Int, correctSymbols: MutableMap<Int, Char>) {
         nowRow = row
         val rowLayout = getRowLayout(nowRow)
@@ -188,7 +217,6 @@ class GameField(
         disableAllLine()
 
     }
-
     fun setText(row: Int, column: Int, text: String) {
         val rowLayout = getRowLayout(row)
         val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
@@ -224,5 +252,11 @@ class GameField(
         }
 
         return answerUser
+    }
+    fun getBackgroundStyle(row: Int, column: Int): Drawable? {
+        val rowLayout = getRowLayout(row)
+        val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
+
+        return cellLayout?.background
     }
 }

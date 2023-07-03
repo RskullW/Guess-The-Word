@@ -17,8 +17,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
+import androidx.core.content.ContextCompat
 import com.anim.toast.CustomToast
+import com.guesstheword.text.Outline.GradientTextView
 import com.guesstheword.text.Outline.OutlineTextView
+import com.guesstheword.timer.CustomTimer
 import kotlin.concurrent.thread
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -45,6 +48,8 @@ class GameActivity : AppCompatActivity() {
         initializeFields()
         initializeKeyboard()
         initializeButtonCheck()
+
+        CustomTimer.start()
     }
     private fun initializeButtonBack() {
         var button: ImageButton = findViewById<ImageButton>(R.id.buttonBack)
@@ -75,8 +80,8 @@ class GameActivity : AppCompatActivity() {
             fourthRow = fourthRow,
             fifthRow = fifthRow,
             sixthRow = sixthRow,
+            isFinish = false,
         )
-
     }
     private fun initializeKeyboard() {
         val keyButtonIds = arrayOf(
@@ -118,7 +123,6 @@ class GameActivity : AppCompatActivity() {
 
             thread {
                 if (userAnswer.length < answer.length) {
-                    // TODO: Реализовать всплывающее сообщение об ошибке
                     runOnUiThread {
                         showCustomToast(
                             this,
@@ -139,7 +143,7 @@ class GameActivity : AppCompatActivity() {
 
                     else {
                         runOnUiThread {
-                            setLine() // TODO: Реализация победы/поражения или переход на следующую строку
+                            setLine()
                             }
                     }
                 }
@@ -147,12 +151,17 @@ class GameActivity : AppCompatActivity() {
         }
     }
     private fun setLine() {
-        if (gameField.nowRow == 6 || answer == userAnswer) {
-            // TODO: Реализация победы и поражения
-        }
+        if (answer == userAnswer) {
+            for (column in 1..maxSymbols) {
+                gameField.setStyleField(gameField.nowRow, column, FieldState.CORRECT)
+            }
 
+            Handler().postDelayed({
+                displayVictoryGame()
+            }, 800)
+        }
         else {
-            for (i in 1..5) {
+            for (i in 1..maxSymbols) {
                 var isOk: Boolean = false
                 if (userAnswer[i-1] == answer[i-1]) {
                     gameField.setStyleField(gameField.nowRow, i, FieldState.CORRECT)
@@ -174,7 +183,7 @@ class GameActivity : AppCompatActivity() {
                     else if (count == 1 && answer[index] != userAnswer[index]) {
                         gameField.setStyleField(gameField.nowRow, i, FieldState.INCORRECT)
 
-                        for (j in 1..5) {
+                        for (j in 1..maxSymbols) {
                             if (userAnswer[j-1] == userAnswer[i-1]) {
                                 gameField.setStyleField(gameField.nowRow, j, FieldState.POSSIBLY)
                                 setBackgroundKeyboard(keyboardButton[userAnswer[j-1]]!!, FieldState.POSSIBLY)
@@ -193,7 +202,20 @@ class GameActivity : AppCompatActivity() {
                     setBackgroundKeyboard(keyboardButton[userAnswer[i-1]]!!, FieldState.INCORRECT)
                 }
             }
-            gameField.setNumberLine(gameField.nowRow+1, correctSymbols)
+
+            if (gameField.nowRow == 6) {
+                for (column in 1..maxSymbols) {
+                    gameField.setStyleField(gameField.nowRow, column, FieldState.CORRECT)
+                }
+
+                Handler().postDelayed({
+                    displayDefeatGame()
+                }, 800)
+            }
+
+            else {
+                gameField.setNumberLine(gameField.nowRow + 1, correctSymbols)
+            }
         }
     }
     private fun isWordSpelledCorrectly(word: String): Boolean {
@@ -232,8 +254,13 @@ class GameActivity : AppCompatActivity() {
 
         return false
     }
-
     private fun setBackgroundKeyboard(value: Button, fieldState: FieldState) {
+        for (correctSymbol in correctSymbols) {
+            if (value.text.contains(correctSymbol.value) && fieldState != FieldState.CORRECT) {
+                return
+            }
+        }
+
         val backgroundResId =
             when(fieldState) {
                 FieldState.CORRECT -> R.drawable.keyboard_button_correct_background
@@ -244,25 +271,79 @@ class GameActivity : AppCompatActivity() {
         value.setBackgroundResource(backgroundResId)
     }
     private fun displayVictoryGame() {
-        setTextColorGradient(true)
-    }
+        var finishFrameLayout = findViewById<FrameLayout>(R.id.finishFrameLayout)
 
+        finishFrameLayout.visibility = View.VISIBLE
+
+        setTextForFinishGame(isVictory = true)
+        var field: GameField = getFieldForFinishWindow()
+
+        for (row in 1..gameField.nowRow) {
+            for (column in 1..maxSymbols) {
+                field.setStyleField(row, column, gameField.getBackgroundStyle(row, column)!!)
+            }
+        }
+
+        setTextTimer()
+    }
     private fun displayDefeatGame() {
-        setTextColorGradient(false)
+        var finishFrameLayout = findViewById<FrameLayout>(R.id.finishFrameLayout)
+        finishFrameLayout.visibility = View.VISIBLE
+
+        setTextForFinishGame(isVictory = false)
+
+        var field: GameField = getFieldForFinishWindow()
+
+        for (row in 1..gameField.nowRow) {
+            for (column in 1..maxSymbols) {
+                field.setStyleField(row, column, gameField.getBackgroundStyle(row, column)!!)
+            }
+        }
+
+        setTextTimer()
     }
+    private fun setTextTimer() {
+        var timerTextView = findViewById<OutlineTextView>(R.id.timerText)
 
-    private fun setTextColorGradient(isVictory: Boolean) {
-        var textView = findViewById<OutlineTextView>(R.id.statusGameTextView)
+        timerTextView.text = CustomTimer.getTimerToString()
+        CustomTimer.stop()
+    }
+    private fun getFieldForFinishWindow(): GameField {
+            val field = findViewById<TableLayout>(R.id.fieldContainerFinish)
+            val firstRow = findViewById<TableRow>(R.id.finishRow1)
+            val secondRow = findViewById<TableRow>(R.id.finishRow2)
+            val thirdRow = findViewById<TableRow>(R.id.finishRow3)
+            val fourthRow = findViewById<TableRow>(R.id.finishRow4)
+            val fifthRow = findViewById<TableRow>(R.id.finishRow5)
+            val sixthRow = findViewById<TableRow>(R.id.finishRow6)
 
-        val paint = textView.paint
-        val width = paint.measureText(textView.text.toString())
-        val textShader: Shader = LinearGradient(0f, 0f, width, textView.textSize, intArrayOf(
+            var fieldTemp = GameField(
+                maxColumns = maxSymbols,
+                gameField = field,
+                maxRows = 6,
+                context = this,
+                firstRow = firstRow,
+                secondRow = secondRow,
+                thirdRow = thirdRow,
+                fourthRow = fourthRow,
+                fifthRow = fifthRow,
+                sixthRow = sixthRow,
+                isFinish = true,
+            )
 
-            Color.parseColor(if (isVictory) "#8EFF00" else "#FF0000"),
-            Color.parseColor(if (isVictory) "#D6FFA1" else "#FFA1A1")
-        ), null, Shader.TileMode.REPEAT)
+        if (gameField.nowRow != 5) {
+            fieldTemp.setVisibleField(gameField.nowRow+1, 6, false)
+        }
+        return fieldTemp
+    }
+    private fun setTextForFinishGame(isVictory: Boolean) {
+        val gradientTextView = findViewById<GradientTextView>(R.id.statusGameTextView)
+        gradientTextView.setGradientColors(
+            if (isVictory) Color.parseColor("#8EFF00") else Color.parseColor("#FF0000"),
+            if (isVictory) Color.parseColor("#D6FFA1") else Color.parseColor("#FFA1A1")
+        )
 
-        textView.paint.setShader(textShader)
+        gradientTextView.text = if (isVictory) "ПОБЕДА" else "ПОРАЖЕНИЕ"
     }
     fun showCustomToast(context: Context, duration: Int, message: String) {
         val layout: FrameLayout = findViewById<FrameLayout>(R.id.toastFrameLayout)

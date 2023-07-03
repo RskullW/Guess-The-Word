@@ -689,12 +689,13 @@
     <FrameLayout
         android:id="@+id/finishFrameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="18dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="70dp"
         android:background="@drawable/finish_background_layout"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -715,7 +716,7 @@
                 android:layout_marginTop="16dp"
                 android:text="02:34" />
 
-            <com.guesstheword.text.Outline.OutlineTextView
+            <com.guesstheword.text.Outline.GradientTextView
                 android:id="@+id/statusGameTextView"
                 style="@style/VictoryTextView"
                 android:layout_width="wrap_content"
@@ -727,61 +728,59 @@
             <TableLayout
                 android:id="@+id/fieldContainerFinish"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="60dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginRight="60dp"
-                android:layout_marginBottom="40dp">
+                android:layout_marginBottom="40dp"
+                android:layout_weight="1">
 
                 <TableRow
                     android:id="@+id/finishRow1"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1" />
 
                 <TableRow
                     android:id="@+id/finishRow2"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1" />
 
                 <TableRow
                     android:id="@+id/finishRow3"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1">
 
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/finishRow4"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1">
 
                 </TableRow>
 
                 <TableRow
                     android:id="@+id/finishRow5"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
                     android:layout_weight="1" />
 
                 <TableRow
                     android:id="@+id/finishRow6"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
             </TableLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="32dp"
-            android:gravity="bottom|center_horizontal"
-            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/correctWord"
@@ -818,6 +817,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/button_background_finish"
                 android:fontFamily="@font/inter_thin"
                 android:text="ПРОДОЛЖИТЬ ИГРУ"
@@ -825,6 +825,7 @@
                 android:textSize="@dimen/text_size_large20"
                 android:textStyle="bold"
                 app:backgroundTint="@null" />
+
         </LinearLayout>
 
     </FrameLayout>
