@@ -15,11 +15,13 @@ import java.net.URL
 import java.net.URLEncoder
 
 class GameActivity : AppCompatActivity() {
-    private val answer: String = "ОБЫСК"
+    private val answer: String = "ПОСОХ"
     private val maxSymbols: Int = 5
     private var userAnswer: String = ""
     private lateinit var gameField: GameField
     private lateinit var buttonCheck: Button
+    private var correctSymbols: MutableMap<Int, Char> = mutableMapOf()
+    private var keyboardButton: MutableMap<Char, Button> = mutableMapOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -69,13 +71,14 @@ class GameActivity : AppCompatActivity() {
             R.id.key3_1, R.id.key3_2, R.id.key3_3,  R.id.key3_4, R.id.key3_5,R.id.key3_6,R.id.key3_7,R.id.key3_8,R.id.key3_9,
         )
 
-
         for (buttonId in keyButtonIds) {
             val keyButton = findViewById<Button>(buttonId)
             keyButton.setOnClickListener {
                 val nextColumn = if (gameField.nowColumn != maxSymbols) gameField.nowColumn + 1 else gameField.nowColumn
                 gameField.setText(gameField.nowRow, gameField.nowColumn, keyButton.text.toString(), nextColumn)
             }
+
+            keyboardButton[keyButton.text[0]] = keyButton
         }
 
         val keyButtonBackspaceFrame = findViewById<FrameLayout>(R.id.key3_10Frame)
@@ -109,14 +112,63 @@ class GameActivity : AppCompatActivity() {
                     }
 
                     else {
-                        setLine() // TODO: Реализация победы/поражения или переход на следующую строку
+                        runOnUiThread {
+                            setLine() // TODO: Реализация победы/поражения или переход на следующую строку
+                        }
                     }
                 }
             }
         }
     }
     private fun setLine() {
+        if (gameField.nowRow == 6 || answer == userAnswer) {
+            // TODO: Реализация победы и поражения
+        }
 
+        else {
+            for (i in 1..5) {
+                var isOk: Boolean = false
+                if (userAnswer[i-1] == answer[i-1]) {
+                    gameField.setStyleField(gameField.nowRow, i, FieldState.CORRECT)
+                    correctSymbols.apply {
+                        put(i, userAnswer[i-1])
+                    }
+
+                    setBackgroundKeyboard(keyboardButton[userAnswer[i-1]]!!, FieldState.CORRECT)
+                }
+
+                else if (answer.contains(userAnswer[i-1])) {
+                    val count = answer.count { it == userAnswer[i-1]}
+                    val index = answer.indexOf(userAnswer[i-1])
+
+                    if (count == 1 && answer[index] == userAnswer[index]) {
+                        gameField.setStyleField(gameField.nowRow, i, FieldState.INCORRECT)
+                    }
+
+                    else if (count == 1 && answer[index] != userAnswer[index]) {
+                        gameField.setStyleField(gameField.nowRow, i, FieldState.INCORRECT)
+
+                        for (j in 1..5) {
+                            if (userAnswer[j-1] == userAnswer[i-1]) {
+                                gameField.setStyleField(gameField.nowRow, j, FieldState.POSSIBLY)
+                                setBackgroundKeyboard(keyboardButton[userAnswer[j-1]]!!, FieldState.POSSIBLY)
+                                break
+                            }
+                        }
+                    }
+                    else {
+                        gameField.setStyleField(gameField.nowRow, i, FieldState.POSSIBLY)
+                        setBackgroundKeyboard(keyboardButton[userAnswer[i-1]]!!, FieldState.POSSIBLY)
+                    }
+                }
+
+                else {
+                    gameField.setStyleField(gameField.nowRow, i, FieldState.INCORRECT)
+                    setBackgroundKeyboard(keyboardButton[userAnswer[i-1]]!!, FieldState.INCORRECT)
+                }
+            }
+            gameField.setNumberLine(gameField.nowRow+1, correctSymbols)
+        }
     }
     private fun isWordSpelledCorrectly(word: String): Boolean {
         var reqParam = URLEncoder.encode("action", "UTF-8") + "=" + URLEncoder.encode("query", "UTF-8")
@@ -153,5 +205,23 @@ class GameActivity : AppCompatActivity() {
         }
 
         return false
+    }
+
+    private fun setBackgroundKeyboard(value: Button, fieldState: FieldState) {
+        val backgroundResId =
+            when(fieldState) {
+                FieldState.CORRECT -> R.drawable.keyboard_button_correct_background
+                FieldState.INCORRECT -> R.drawable.keyboard_button_incorrect_background
+                FieldState.POSSIBLY -> R.drawable.keyboard_button_possibly_background
+                else -> R.drawable.keyboard_button_background
+            }
+        value.setBackgroundResource(backgroundResId)
+    }
+    private fun displayVictoryGame() {
+
+    }
+
+    private fun displayDefeatGame() {
+
     }
 }

@@ -1,16 +1,18 @@
 package com.example.guesstheword
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.TransitionDrawable
+import android.text.Editable
 import android.text.InputFilter
 import android.text.InputType
+import android.text.TextWatcher
 import android.view.*
 import android.view.animation.AlphaAnimation
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TableLayout
 import android.widget.TableRow
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 
 class GameField(
@@ -87,6 +89,7 @@ class GameField(
         editText.setTextAppearance(context, R.style.EditTextField)
         editText.isCursorVisible = true
         editText.contentDescription = "$row$column"
+        editText.setTextColor(Color.BLACK)
 
         if (row != numberLine.toInt()) {
             editText.isEnabled = false
@@ -99,11 +102,15 @@ class GameField(
             }
             false
         }
-        editText.requestFocus()
+
         return editText
     }
     private fun disableAllLine() {
         for (row in 1..maxRows) {
+            if (row == nowRow) {
+                continue
+            }
+
             for (column in 1..maxColumns) {
                 val rowLayout = getRowLayout(row)
                 val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
@@ -120,7 +127,7 @@ class GameField(
         val currentBackground = cellLayout?.background
         val newBackground = when (fieldState) {
             FieldState.CORRECT -> ContextCompat.getDrawable(context, R.drawable.field_correct)
-            FieldState.INCORRECT -> ContextCompat.getDrawable(context, R.drawable.field_uncorrect)
+            FieldState.INCORRECT -> ContextCompat.getDrawable(context, R.drawable.field_incorrect)
             FieldState.POSSIBLY -> ContextCompat.getDrawable(context, R.drawable.field_possibly)
             else -> ContextCompat.getDrawable(context, R.drawable.field_standart)
         }
@@ -150,7 +157,7 @@ class GameField(
             cellLayout?.setBackgroundResource(
                 when (fieldState) {
                     FieldState.CORRECT -> R.drawable.field_correct
-                    FieldState.INCORRECT -> R.drawable.field_uncorrect
+                    FieldState.INCORRECT -> R.drawable.field_incorrect
                     FieldState.POSSIBLY -> R.drawable.field_possibly
                     else -> R.drawable.field_standart
                 }
@@ -158,31 +165,30 @@ class GameField(
         }
     }
 
+    fun setNumberLine(row: Int, correctSymbols: MutableMap<Int, Char>) {
+        nowRow = row
+        val rowLayout = getRowLayout(nowRow)
 
-    fun setNumberLine(row: Int) {
-        disableAllLine()
+        for (column in 1..  maxColumns) {
 
-        val rowLayout = getRowLayout(row)
-        for (column in 1..maxColumns) {
             val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
             val editText = cellLayout?.getChildAt(0) as? EditText
-
             editText?.isEnabled = true
+
+            if (correctSymbols.containsKey(column)) {
+                editText?.setHint(correctSymbols[column].toString())
+            }
+
+            if (column == 1) {
+                editText?.requestFocus()
+            }
         }
 
+        nowColumn = 1
+        disableAllLine()
+
     }
-    fun setTextCorrect(row: Int, column: Int, text: String) {
-        val rowLayout = getRowLayout(row)
-        val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
-        val editText = cellLayout?.getChildAt(0) as? EditText
 
-        editText?.setText(text)
-
-        val colorResId = R.color.gray_black
-        editText?.setTextColor(ContextCompat.getColor(context, colorResId))
-
-        editText?.clearFocus()
-    }
     fun setText(row: Int, column: Int, text: String) {
         val rowLayout = getRowLayout(row)
         val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
