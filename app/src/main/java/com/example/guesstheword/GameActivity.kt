@@ -1,17 +1,25 @@
 package com.example.guesstheword
 
 import android.content.Intent
-import android.media.Image
+import android.icu.lang.UCharacter.toLowerCase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
+import kotlin.concurrent.thread
+import org.json.JSONObject
+import java.io.BufferedReader
+import java.io.InputStreamReader
+import java.net.HttpURLConnection
+import java.net.URL
+import java.net.URLEncoder
 
 class GameActivity : AppCompatActivity() {
     private val answer: String = "ОБЫСК"
     private val maxSymbols: Int = 5
     private var userAnswer: String = ""
     private lateinit var gameField: GameField
-
+    private lateinit var buttonCheck: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
@@ -19,6 +27,7 @@ class GameActivity : AppCompatActivity() {
         initializeButtonBack()
         initializeFields()
         initializeKeyboard()
+        initializeButtonCheck()
     }
     private fun initializeButtonBack() {
         var button: ImageButton = findViewById<ImageButton>(R.id.buttonBack)
@@ -82,5 +91,67 @@ class GameActivity : AppCompatActivity() {
             gameField.setText(gameField.nowRow, gameField.nowColumn, "", prevColumn)
         }
 
+    }
+    private fun initializeButtonCheck() {
+        buttonCheck = findViewById(R.id.buttonCheckWord)
+
+        buttonCheck.setOnClickListener {
+            userAnswer = gameField.getWord(gameField.nowRow)
+
+            thread {
+                if (userAnswer.length < answer.length) {
+                    // TODO: Реализовать всплывающее сообщение об ошибке
+                    Log.d("Word", "Недостаточно букв")
+                } else {
+                    if (!isWordSpelledCorrectly(userAnswer)) {
+                        // TODO: Реализовать всплывающее сообщение об ошибке, что такого слова нет в русском языке
+                        Log.d("Word", "Такого слова нет в словаре")
+                    }
+
+                    else {
+                        setLine() // TODO: Реализация победы/поражения или переход на следующую строку
+                    }
+                }
+            }
+        }
+    }
+    private fun setLine() {
+
+    }
+    private fun isWordSpelledCorrectly(word: String): Boolean {
+        var reqParam = URLEncoder.encode("action", "UTF-8") + "=" + URLEncoder.encode("query", "UTF-8")
+        reqParam += "&" + URLEncoder.encode("format", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")
+        reqParam += "&" + URLEncoder.encode("titles", "UTF-8") + "=" + URLEncoder.encode(toLowerCase(word), "UTF-8")
+        val mURL = URL("https://ru.wiktionary.org/w/api.php?$reqParam")
+
+        with(mURL.openConnection() as HttpURLConnection) {
+            requestMethod = "GET"
+
+            BufferedReader(InputStreamReader(inputStream)).use {
+                val response = StringBuffer()
+                var inputLine = it.readLine()
+                while (inputLine != null) {
+                    response.append(inputLine)
+                    inputLine = it.readLine()
+                }
+                it.close()
+
+                if (responseCode == 200) {
+                    val json = JSONObject(response.toString())
+                    val pages = json.getJSONObject("query").getJSONObject("pages")
+
+                    for (key in pages.keys()) {
+                        if (key != "-1") {
+                            return true
+                        }
+                    }
+                } else {
+                    // Error occurred while making the request
+                    Log.d("Error: ", "$responseCode")
+                }
+            }
+        }
+
+        return false
     }
 }
