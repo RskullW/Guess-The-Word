@@ -2,6 +2,9 @@ package com.example.guesstheword
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.graphics.Typeface
 import android.icu.lang.UCharacter.toLowerCase
 import android.opengl.Visibility
@@ -15,6 +18,7 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
 import com.anim.toast.CustomToast
+import com.guesstheword.text.Outline.OutlineTextView
 import kotlin.concurrent.thread
 import org.json.JSONObject
 import java.io.BufferedReader
@@ -240,13 +244,26 @@ class GameActivity : AppCompatActivity() {
         value.setBackgroundResource(backgroundResId)
     }
     private fun displayVictoryGame() {
-
+        setTextColorGradient(true)
     }
 
     private fun displayDefeatGame() {
-
+        setTextColorGradient(false)
     }
 
+    private fun setTextColorGradient(isVictory: Boolean) {
+        var textView = findViewById<OutlineTextView>(R.id.statusGameTextView)
+
+        val paint = textView.paint
+        val width = paint.measureText(textView.text.toString())
+        val textShader: Shader = LinearGradient(0f, 0f, width, textView.textSize, intArrayOf(
+
+            Color.parseColor(if (isVictory) "#8EFF00" else "#FF0000"),
+            Color.parseColor(if (isVictory) "#D6FFA1" else "#FFA1A1")
+        ), null, Shader.TileMode.REPEAT)
+
+        textView.paint.setShader(textShader)
+    }
     fun showCustomToast(context: Context, duration: Int, message: String) {
         val layout: FrameLayout = findViewById<FrameLayout>(R.id.toastFrameLayout)
         val textView: TextView = layout.findViewById(R.id.toastTextView)
