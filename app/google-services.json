@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "619608118390",
+    "project_id": "guess-the-word-d5893",
+    "storage_bucket": "guess-the-word-d5893.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619608118390:android:2a2c68a0f65da8db7afb57",
+        "android_client_info": {
+          "package_name": "com.example.guesstheword"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619608118390-vae837nf4or9m6kffurt7s2lcd5qrtn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvw9f5DUHkZDbcceDz8ArByqRgt9JS95s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619608118390-vae837nf4or9m6kffurt7s2lcd5qrtn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

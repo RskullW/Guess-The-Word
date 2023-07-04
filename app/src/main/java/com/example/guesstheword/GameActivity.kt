@@ -40,6 +40,7 @@ class GameActivity : AppCompatActivity() {
     private lateinit var buttonCheck: Button
     private var correctSymbols: MutableMap<Int, Char> = mutableMapOf()
     private var keyboardButton: MutableMap<Char, Button> = mutableMapOf()
+    private var isThreadRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +61,7 @@ class GameActivity : AppCompatActivity() {
         // TODO: Реализация запросов из базы данных на слово из выбранной категории и режима, которые находятся в GameSettings
         Log.d("GAME_MODE", "${GameSettings.gameMode}")
         Log.d("CATEGORY", "${GameSettings.categoryName}")
-        answer = "ПОСОХ"
+        answer = "ГОД"
         maxSymbols = answer.length
     }
     private fun initializeButtonFinish() {
@@ -154,28 +155,34 @@ class GameActivity : AppCompatActivity() {
         buttonCheck = findViewById(R.id.buttonCheckWord)
 
         buttonCheck.setOnClickListener {
-            userAnswer = gameField.getWord(gameField.nowRow)
+            if (!isThreadRunning) {
+                isThreadRunning = true
 
-            thread {
-                if (userAnswer.length < answer.length) {
-                    runOnUiThread {
-                        showCustomToast(
-                            "Не хватает букв! Должно быть: ${answer.length} букв!"
-                        )
-                    }
-                } else {
-                    if (!isWordSpelledCorrectly(userAnswer)) {
+                userAnswer = gameField.getWord(gameField.nowRow)
+
+                thread {
+                    if (userAnswer.length < answer.length) {
                         runOnUiThread {
                             showCustomToast(
-                                "Такого слова нет в нашем словаре!\nПожалуйста, введите существительное в ед.числе, им.падеже. Например, ОБЫСК"
+                                "Не хватает букв! Должно быть: ${answer.length} букв!"
                             )
-                        }
-                    }
+                            isThreadRunning = false
 
-                    else {
-                        runOnUiThread {
-                            setLine()
+                        }
+                    } else {
+                        if (!isWordSpelledCorrectly(userAnswer)) {
+                            runOnUiThread {
+                                showCustomToast(
+                                    "Такого слова нет в нашем словаре!\nПожалуйста, введите существительное в ед.числе, им.падеже. Например, ОБЫСК"
+                                )
+                                isThreadRunning = false
                             }
+                        } else {
+                            runOnUiThread {
+                                setEnabledButtons(false)
+                                setLine()
+                            }
+                        }
                     }
                 }
             }
@@ -183,6 +190,8 @@ class GameActivity : AppCompatActivity() {
     }
     private fun setLine() {
         if (answer == userAnswer) {
+            setEnabledButtons(false)
+
             for (column in 1..maxSymbols) {
                 gameField.setStyleField(gameField.nowRow, column, FieldState.CORRECT)
             }
@@ -192,6 +201,7 @@ class GameActivity : AppCompatActivity() {
             }, 800)
         }
         else {
+            setEnabledButtons(false)
             for (i in 1..maxSymbols) {
                 var isOk: Boolean = false
                 if (userAnswer[i-1] == answer[i-1]) {
@@ -235,6 +245,8 @@ class GameActivity : AppCompatActivity() {
             }
 
             if (gameField.nowRow == 6) {
+                setEnabledButtons(false)
+
                 for (column in 1..maxSymbols) {
                     gameField.setStyleField(gameField.nowRow, column, FieldState.CORRECT)
                 }
@@ -245,6 +257,8 @@ class GameActivity : AppCompatActivity() {
             }
 
             else {
+                setEnabledButtons(true)
+                isThreadRunning = false
                 gameField.setNumberLine(gameField.nowRow + 1, correctSymbols)
             }
         }
@@ -302,6 +316,7 @@ class GameActivity : AppCompatActivity() {
         value.setBackgroundResource(backgroundResId)
     }
     private fun displayVictoryGame() {
+
         var finishFrameLayout = findViewById<FrameLayout>(R.id.finishFrameLayout)
 
         finishFrameLayout.visibility = View.VISIBLE
@@ -318,6 +333,7 @@ class GameActivity : AppCompatActivity() {
         setTextTimer()
     }
     private fun displayDefeatGame() {
+
         var finishFrameLayout = findViewById<FrameLayout>(R.id.finishFrameLayout)
         finishFrameLayout.visibility = View.VISIBLE
 
@@ -379,10 +395,19 @@ class GameActivity : AppCompatActivity() {
     private fun setTextRightAnswer() {
         findViewById<TextView>(R.id.correctWord).text = "Правильное слово - $answer"
     }
+    private fun setEnabledButtons(isEnabled: Boolean = false) {
+        buttonCheck.isEnabled = isEnabled
+        findViewById<ImageButton>(R.id.buttonBack).isEnabled = isEnabled
+
+        for (button in keyboardButton) {
+            button.value.isEnabled = isEnabled
+        }
+    }
     fun showCustomToast(message: String) {
         val layout: FrameLayout = findViewById<FrameLayout>(R.id.toastFrameLayout)
         val textView: TextView = layout.findViewById(R.id.toastTextView)
 
         CustomToast.start(message, layout, textView, this)
     }
+
 }

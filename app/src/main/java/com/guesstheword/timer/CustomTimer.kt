@@ -8,6 +8,8 @@ object CustomTimer {
     private val maxTime: Long = 5999000
 
     fun start() {
+        timer?.cancel()
+
         val initialTime = maxTime - currentTime
 
         timer = object : CountDownTimer(maxTime, 1000) {

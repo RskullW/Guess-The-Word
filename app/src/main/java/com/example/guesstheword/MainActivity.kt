@@ -11,7 +11,9 @@ import android.widget.LinearLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.guesstheword.button.state.ButtonState
+import com.guesstheword.database.DataBase
 import com.guesstheword.stats.GameSettings
+import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var buttonReady: Button
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         initializeButtonsMode()
         initializeButtonsCategories()
         initializeButtonReady()
+
+        DataBase.fetchCategories()
+
     }
 
     private fun initializeButtonsMode() {
@@ -123,7 +128,6 @@ class MainActivity : AppCompatActivity() {
         buttonReady = findViewById(R.id.buttonStartGame)
 
         buttonReady.setOnClickListener {
-
             for (buttonState in mapButtonMode) {
                 if (buttonState.value.isPressed) {
                     GameSettings.gameMode = buttonState.value.button.contentDescription.toString()
