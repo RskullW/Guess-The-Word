@@ -7,7 +7,7 @@ object GameSettings {
     var gameMode: String = ""
     var word: String = ""
     fun findWord() {
-        var categories: MutableMap<String, Int> = mutableMapOf()
+        var categories: MutableMap<String, Int>
         var lengthWord: Int = 0
 
         if (categoryName == "all") {

@@ -8,14 +8,14 @@ import android.view.Gravity
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.LinearLayout
+import androidx.core.view.size
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.guesstheword.button.state.ButtonState
 import com.guesstheword.database.DataBase
 import com.guesstheword.stats.GameSettings
-import java.util.Locale.Category
-import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
     private lateinit var buttonReady: Button
@@ -31,9 +31,18 @@ class MainActivity : AppCompatActivity() {
         initializeButtonsMode()
         initializeButtonsCategories()
         initializeButtonReady()
-
+        initializeOtherButton()
     }
 
+    private fun initializeOtherButton() {
+        findViewById<ImageButton>(R.id.buttonRules).setOnClickListener{
+            startActivity(Intent(this, RulesActivity::class.java))
+        }
+
+        findViewById<ImageButton>(R.id.buttonAccount).setOnClickListener {
+            startActivity(Intent(this, RulesActivity::class.java))
+        }
+    }
     private fun initializeButtonsMode() {
         val buttonIds = listOf(
             R.id.buttonRandomWord1,
@@ -69,20 +78,19 @@ class MainActivity : AppCompatActivity() {
     private fun initializeButtonsCategories() {
         val buttonContainer = findViewById<LinearLayout>(R.id.buttonContainer)
 
-        var index: Int = 0
-        var linearLayout: LinearLayout = createNewLinearLine(index)!!
+        var linearLayout: LinearLayout = createNewLinearLine()
 
         mapButtonCategories.put("all", ButtonState(button = findViewById<Button>(R.id.buttonRandomCategory1), _isPressed = false))
 
         for (category in DataBase.categoriesMap) {
-            val button = Button(this, null, 0, if (index%2 == 0) R.style.AppButtonStyleRight else R.style.AppButtonStyleLeft)
+            val button = Button(this, null, 0, if (linearLayout.size == 0) R.style.AppButtonStyleRight else R.style.AppButtonStyleLeft)
 
             val layoutParams = LinearLayout.LayoutParams(
                 resources.getDimensionPixelSize(R.dimen.button_width),
                 resources.getDimensionPixelSize(R.dimen.button_height)
             )
 
-            if (index % 2 == 1) {
+            if (linearLayout.size == 0) {
                 layoutParams.setMargins(0, 20.dpToPx(), 24.dpToPx(), 0)
             } else {
                 layoutParams.setMargins(24.dpToPx(), 20.dpToPx(), 0, 0)
@@ -91,22 +99,21 @@ class MainActivity : AppCompatActivity() {
             button.layoutParams = layoutParams
 
             button.text = category.key
-
             val buttonState = ButtonState(button = button, _isPressed = false)
-            mapButtonCategories.apply {
-                put(button.text as String, buttonState)
-            }
+            mapButtonCategories.put(button.text as String, buttonState)
 
             linearLayout.addView(mapButtonCategories[button.text]!!.button)
 
-            var layout = createNewLinearLine(index)
 
-            linearLayout = if (layout == null) {
+            if (linearLayout.size == 2) {
                 buttonContainer.addView(linearLayout)
-                linearLayout
-            } else layout
+                linearLayout = createNewLinearLine()
+            }
+        }
 
-            index++
+        if (linearLayout.size == 1) {
+            buttonContainer.addView(linearLayout)
+            Log.d("LINEARLAYOUT", "${linearLayout.size}")
         }
 
         for (buttonState in mapButtonCategories) {
@@ -118,7 +125,6 @@ class MainActivity : AppCompatActivity() {
                     if (button == buttonState) continue
                     button.value.isPressed = false
                 }
-
                 isSelectCategory.value = mapButtonCategories.checkState()
             }
         }
@@ -168,19 +174,15 @@ class MainActivity : AppCompatActivity() {
             } else buttonReady.visibility
         }
     }
-    private fun createNewLinearLine(index: Int):LinearLayout? {
-        if (index % 2 == 0) {
-            val linearLayout = LinearLayout(this)
-            linearLayout.layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
-            linearLayout.gravity = Gravity.CENTER_HORIZONTAL
+    private fun createNewLinearLine(): LinearLayout {
+        val linearLayout = LinearLayout(this)
+        linearLayout.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        linearLayout.gravity = Gravity.CENTER_HORIZONTAL
 
-            return linearLayout
-        }
-
-        return null
+        return linearLayout
     }
     private fun Int.dpToPx(): Int {
         val scale = resources.displayMetrics.density
