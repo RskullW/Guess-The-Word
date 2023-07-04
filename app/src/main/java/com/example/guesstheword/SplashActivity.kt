@@ -19,8 +19,6 @@ class SplashActivity : AppCompatActivity(), DataCallback {
 
         GameSettings.loadStats(this)
         DataBase.fetchCategories(this)
-
-        findViewById<GradientTextView>(R.id.splashGradientTextView).setGradientColors(Color.parseColor("#AA222BFF"), Color.parseColor("#AAA8EC52"))
     }
 
     override fun onDataLoaded() {
