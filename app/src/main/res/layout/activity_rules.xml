@@ -27,7 +27,7 @@
                 android:background="@null"
                 android:contentDescription="BackMainMenu"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/back_menu_game" />
+                app:srcCompat="@drawable/back_menu_personal" />
 
             <com.guesstheword.text.Outline.OutlineTextView
                 android:id="@+id/titleRule"

@@ -107,7 +107,7 @@ class GameField(
         editText.inputType = InputType.TYPE_NULL
         editText.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(1))
         editText.maxLines = 1
-        editText.setTextAppearance(context, R.style.EditTextField)
+        if (!isFinish) editText.setTextAppearance(context, R.style.EditTextField)
         editText.isCursorVisible = !isFinish
         editText.contentDescription = "$row$column"
         editText.setTextColor(Color.BLACK)

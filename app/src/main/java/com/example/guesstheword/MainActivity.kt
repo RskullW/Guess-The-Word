@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<ImageButton>(R.id.buttonAccount).setOnClickListener {
-            startActivity(Intent(this, RulesActivity::class.java))
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
     private fun initializeButtonsMode() {

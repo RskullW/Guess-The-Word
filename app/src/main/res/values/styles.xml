@@ -2,7 +2,7 @@
 <resources>
     <style name="AppButtonStyleLeft" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_selector</item>
-        <item name="android:textColor">"#67131313"</item>
+        <item name="android:textColor">"#131313"</item>
         <item name="android:textSize">@dimen/text_size_large16</item>
         <item name="android:fontFamily">@font/inter_thin</item>
         <item name="android:padding">16dp</item>
@@ -15,7 +15,7 @@
     </style>
     <style name="AppButtonStyleRight" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/button_selector</item>
-        <item name="android:textColor">"#67131313"</item>
+        <item name="android:textColor">"#131313"</item>
         <item name="android:textSize">@dimen/text_size_large16</item>
         <item name="android:fontFamily">@font/inter_thin</item>
         <item name="android:padding">16dp</item>

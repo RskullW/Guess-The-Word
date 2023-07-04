@@ -17,14 +17,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.guesstheword.text.Outline.OutlineTextView
-            android:id="@+id/outlineTextView"
-            android:layout_width="match_parent"
+        <com.guesstheword.text.Outline.GradientTextView
+            android:id="@+id/splashGradientTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_bold"
             android:text="GUESS THE WORD"
-            android:textColor="#69ADFF"
-            android:textSize="@dimen/text_size_large28"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_large32"
             android:textStyle="bold" />
 
         <ProgressBar

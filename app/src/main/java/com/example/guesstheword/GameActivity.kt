@@ -171,7 +171,7 @@ class GameActivity : AppCompatActivity() {
 
                         }
                     } else {
-                        if (!isWordSpelledCorrectly(userAnswer)) {
+                        if (!isWordSpelledCorrectly(userAnswer) && userAnswer != answer) {
                             runOnUiThread {
                                 showCustomToast(
                                     "Такого слова нет в нашем словаре!\nПожалуйста, введите существительное в ед.числе, им.падеже. Например, ОБЫСК"
@@ -188,6 +188,24 @@ class GameActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun saveStats(isVictory: Boolean) {
+        if (isVictory) {
+            GameSettings.victoryRounds++
+        }
+
+        else {
+            GameSettings.defeatRounds++
+        }
+
+        if (GameSettings.nowCategory == "all") {
+            GameSettings.categoriesPlayed["нет"] = GameSettings.categoriesPlayed.getOrDefault("нет", 0U) + 1U
+        } else {
+            GameSettings.categoriesPlayed[GameSettings.nowCategory] = GameSettings.categoriesPlayed.getOrDefault(GameSettings.nowCategory, 0U) + 1U
+        }
+
+        GameSettings.saveStats(this)
     }
     private fun setLine() {
         if (answer == userAnswer) {
@@ -323,6 +341,7 @@ class GameActivity : AppCompatActivity() {
         finishFrameLayout.visibility = View.VISIBLE
 
         setTextForFinishGame(isVictory = true)
+        saveStats(true)
         var field: GameField = getFieldForFinishWindow()
 
         for (row in 1..gameField.nowRow) {
@@ -341,7 +360,7 @@ class GameActivity : AppCompatActivity() {
         setTextForFinishGame(isVictory = false)
 
         var field: GameField = getFieldForFinishWindow()
-
+        saveStats(false)
         for (row in 1..gameField.nowRow) {
             for (column in 1..maxSymbols) {
                 field.setStyleField(row, column, gameField.getBackgroundStyle(row, column)!!)

@@ -74,9 +74,11 @@
 
                 <FrameLayout
                     android:id="@+id/frameLayoutSelectMode"
-                    android:layout_width="341dp"
-                    android:layout_height="38dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/rounded_game_mode_background">
 
                     <com.guesstheword.text.Outline.OutlineTextView
@@ -84,6 +86,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:text="Выбор режима"
                         android:textAlignment="center"
                         android:textColor="#FFFFFF"
@@ -107,7 +111,7 @@
                         android:fontFamily="@font/inter_bold"
                         android:padding="16dp"
                         android:text="Случайные слова"
-                        android:textColor="#67131313"
+                        android:textColor="#131313"
                         android:textSize="@dimen/text_size_large16"
                         android:textStyle="bold"
                         app:backgroundTint="@null" />
@@ -131,7 +135,7 @@
                     android:fontFamily="@font/inter_bold"
                     android:padding="16dp"
                     android:text="5 букв"
-                    android:textColor="#67131313"
+                    android:textColor="#131313"
                     android:textSize="@dimen/text_size_large16"
                     android:textStyle="bold"
                     app:backgroundTint="@null" />
@@ -147,7 +151,7 @@
                     android:fontFamily="@font/inter_bold"
                     android:padding="16dp"
                     android:text="6 букв"
-                    android:textColor="#67131313"
+                    android:textColor="#131313"
                     android:textSize="@dimen/text_size_large16"
                     android:textStyle="bold"
                     app:backgroundTint="@null" />
@@ -170,7 +174,7 @@
                     android:fontFamily="@font/inter_bold"
                     android:padding="16dp"
                     android:text="7 букв"
-                    android:textColor="#67131313"
+                    android:textColor="#131313"
                     android:textSize="@dimen/text_size_large16"
                     android:textStyle="bold"
                     app:backgroundTint="@null" />
@@ -186,7 +190,7 @@
                     android:fontFamily="@font/inter_bold"
                     android:padding="16dp"
                     android:text="8 букв"
-                    android:textColor="#67131313"
+                    android:textColor="#131313"
                     android:textSize="@dimen/text_size_large16"
                     android:textStyle="bold"
                     app:backgroundTint="@null" />
@@ -200,10 +204,12 @@
 
                 <FrameLayout
                     android:id="@+id/frameLayoutSelectCategory"
-                    android:layout_width="341dp"
-                    android:layout_height="38dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
                     android:background="@drawable/rounded_game_mode_background">
 
                     <com.guesstheword.text.Outline.OutlineTextView
@@ -211,6 +217,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:text="Выбор категории"
                         android:textAlignment="center"
                         android:textColor="#FFFFFF"
@@ -227,19 +235,20 @@
 
                     <Button
                         android:id="@+id/buttonRandomCategory1"
-                        android:layout_width="285dp"
-                        android:layout_height="63dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="50dp"
                         android:layout_marginTop="20dp"
+                        android:layout_marginRight="50dp"
                         android:background="@drawable/button_selector"
+                        android:contentDescription="all"
                         android:fontFamily="@font/inter_bold"
                         android:padding="16dp"
                         android:text="Общая категория"
-                        android:textColor="#67131313"
+                        android:textColor="#131313"
                         android:textSize="@dimen/text_size_large16"
                         android:textStyle="bold"
-                        android:contentDescription="all"
-                        app:backgroundTint="@null"
-                        />
+                        app:backgroundTint="@null" />
                 </LinearLayout>
 
             </LinearLayout>
