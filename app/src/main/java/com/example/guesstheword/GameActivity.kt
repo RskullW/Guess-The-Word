@@ -19,6 +19,7 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.core.content.ContextCompat
 import com.anim.toast.CustomToast
+import com.guesstheword.stats.GameSettings
 import com.guesstheword.text.Outline.GradientTextView
 import com.guesstheword.text.Outline.OutlineTextView
 import com.guesstheword.timer.CustomTimer
@@ -32,8 +33,8 @@ import java.net.URLEncoder
 import java.time.Duration
 
 class GameActivity : AppCompatActivity() {
-    private val answer: String = "ПОСОХ"
-    private val maxSymbols: Int = 5
+    private var answer: String = "ПОСОХ"
+    private var maxSymbols: Int = 5
     private var userAnswer: String = ""
     private lateinit var gameField: GameField
     private lateinit var buttonCheck: Button
@@ -44,12 +45,46 @@ class GameActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
         supportActionBar?.hide()
+        createWord()
         initializeButtonBack()
         initializeFields()
         initializeKeyboard()
         initializeButtonCheck()
+        initializeButtonFinish()
+        setTextRightAnswer()
 
         CustomTimer.start()
+    }
+
+    private fun createWord() {
+        // TODO: Реализация запросов из базы данных на слово из выбранной категории и режима, которые находятся в GameSettings
+        Log.d("GAME_MODE", "${GameSettings.gameMode}")
+        Log.d("CATEGORY", "${GameSettings.categoryName}")
+        answer = "ПОСОХ"
+        maxSymbols = answer.length
+    }
+    private fun initializeButtonFinish() {
+        var buttonExitMenu = findViewById<Button>(R.id.exitMenuButton)
+        var buttonContinue = findViewById<Button>(R.id.continueButton)
+        var buttonBack = findViewById<ImageButton>(R.id.buttonBack)
+
+        buttonExitMenu.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+        buttonContinue.setOnClickListener {
+            val intent = Intent(this, GameActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+        buttonBack.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
     }
     private fun initializeButtonBack() {
         var button: ImageButton = findViewById<ImageButton>(R.id.buttonBack)
@@ -125,8 +160,6 @@ class GameActivity : AppCompatActivity() {
                 if (userAnswer.length < answer.length) {
                     runOnUiThread {
                         showCustomToast(
-                            this,
-                            5,
                             "Не хватает букв! Должно быть: ${answer.length} букв!"
                         )
                     }
@@ -134,8 +167,6 @@ class GameActivity : AppCompatActivity() {
                     if (!isWordSpelledCorrectly(userAnswer)) {
                         runOnUiThread {
                             showCustomToast(
-                                this,
-                                5,
                                 "Такого слова нет в нашем словаре!\nПожалуйста, введите существительное в ед.числе, им.падеже. Например, ОБЫСК"
                             )
                         }
@@ -345,7 +376,10 @@ class GameActivity : AppCompatActivity() {
 
         gradientTextView.text = if (isVictory) "ПОБЕДА" else "ПОРАЖЕНИЕ"
     }
-    fun showCustomToast(context: Context, duration: Int, message: String) {
+    private fun setTextRightAnswer() {
+        findViewById<TextView>(R.id.correctWord).text = "Правильное слово - $answer"
+    }
+    fun showCustomToast(message: String) {
         val layout: FrameLayout = findViewById<FrameLayout>(R.id.toastFrameLayout)
         val textView: TextView = layout.findViewById(R.id.toastTextView)
 

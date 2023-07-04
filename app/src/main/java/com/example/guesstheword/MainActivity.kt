@@ -11,13 +11,10 @@ import android.widget.LinearLayout
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.guesstheword.button.state.ButtonState
+import com.guesstheword.stats.GameSettings
 
 class MainActivity : AppCompatActivity() {
     private lateinit var buttonReady: Button
-    private lateinit var buttonRandomWord: Button
-    private var isButtonPressed: Boolean = false
-    private val colorTextButtonPressed: Int = R.color.colorTextButtonPressed
-    private val colorTextButtonNotPressed: Int = R.color.colorTextButtonNotPressed
     private var mapButtonMode: MutableMap<String, ButtonState> = mutableMapOf()
     private var mapButtonCategories: MutableMap<String, ButtonState> = mutableMapOf()
     private val isSelectMode: MutableLiveData<Boolean> = MutableLiveData(false)
@@ -126,6 +123,20 @@ class MainActivity : AppCompatActivity() {
         buttonReady = findViewById(R.id.buttonStartGame)
 
         buttonReady.setOnClickListener {
+
+            for (buttonState in mapButtonMode) {
+                if (buttonState.value.isPressed) {
+                    GameSettings.gameMode = buttonState.value.button.contentDescription.toString()
+                    break
+                }
+            }
+
+            for (buttonState in mapButtonCategories) {
+                if (buttonState.value.isPressed) {
+                    GameSettings.categoryName = buttonState.value.button.text.toString()
+                    break
+                }
+            }
             val intent = Intent(this, GameActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
