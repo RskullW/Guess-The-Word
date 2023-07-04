@@ -3,6 +3,7 @@ package com.example.guesstheword
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -13,6 +14,7 @@ import androidx.lifecycle.Observer
 import com.guesstheword.button.state.ButtonState
 import com.guesstheword.database.DataBase
 import com.guesstheword.stats.GameSettings
+import java.util.Locale.Category
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -25,11 +27,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
+
         initializeButtonsMode()
         initializeButtonsCategories()
         initializeButtonReady()
-
-        DataBase.fetchCategories()
 
     }
 
@@ -73,9 +74,7 @@ class MainActivity : AppCompatActivity() {
 
         mapButtonCategories.put("all", ButtonState(button = findViewById<Button>(R.id.buttonRandomCategory1), _isPressed = false))
 
-
-        for (i in 1..10) {
-
+        for (category in DataBase.categoriesMap) {
             val button = Button(this, null, 0, if (index%2 == 0) R.style.AppButtonStyleRight else R.style.AppButtonStyleLeft)
 
             val layoutParams = LinearLayout.LayoutParams(
@@ -91,7 +90,7 @@ class MainActivity : AppCompatActivity() {
 
             button.layoutParams = layoutParams
 
-            button.text = "Temp№${index}"
+            button.text = category.key
 
             val buttonState = ButtonState(button = button, _isPressed = false)
             mapButtonCategories.apply {
@@ -141,6 +140,7 @@ class MainActivity : AppCompatActivity() {
                     break
                 }
             }
+            GameSettings.findWord()
             val intent = Intent(this, GameActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

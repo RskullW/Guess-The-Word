@@ -6,7 +6,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 object DataBase {
     val categoriesMap: MutableMap<String, MutableMap<String, Int>> = mutableMapOf()
 
-    fun fetchCategories() {
+    fun fetchCategories(callback: DataCallback) {
         val db = FirebaseFirestore.getInstance()
         val collectionRef = db.collection("Categories")
 
@@ -17,7 +17,6 @@ object DataBase {
 
                 val fieldsMap: MutableMap<String, Int> = mutableMapOf()
 
-                // Iterate over the fields in the category
                 if (categoryData != null) {
                     for ((field, value) in categoryData) {
                         if (field != "documentId") {
@@ -31,14 +30,11 @@ object DataBase {
                 categoriesMap[category] = fieldsMap
             }
 
-            for ((category, fields) in categoriesMap) {
-                Log.d("Categories", "Категория: $category")
-                for ((field, length) in fields) {
-                    Log.d("Categories", "Слово: $field, Количество букв: $length")
-                }
-            }
+            callback.onDataLoaded()
         }.addOnFailureListener { exception ->
             Log.d("Error", "Ошибка при получении данных из Firestore: ${exception.message}")
+            callback.onDataLoaded()
+
         }
     }
 }

@@ -58,10 +58,10 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun createWord() {
-        // TODO: Реализация запросов из базы данных на слово из выбранной категории и режима, которые находятся в GameSettings
         Log.d("GAME_MODE", "${GameSettings.gameMode}")
         Log.d("CATEGORY", "${GameSettings.categoryName}")
-        answer = "ГОД"
+        Log.d("WORD", "${GameSettings.word}")
+        answer = if (GameSettings.word.length < 5) "ПОСОХ" else GameSettings.word
         maxSymbols = answer.length
     }
     private fun initializeButtonFinish() {
@@ -76,6 +76,7 @@ class GameActivity : AppCompatActivity() {
         }
 
         buttonContinue.setOnClickListener {
+            GameSettings.findWord()
             val intent = Intent(this, GameActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
