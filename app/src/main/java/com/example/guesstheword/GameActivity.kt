@@ -14,6 +14,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.*
@@ -147,8 +148,32 @@ class GameActivity : AppCompatActivity() {
         }
 
         keyButtonBackspace.setOnClickListener {
-            val prevColumn = if (gameField.nowColumn - 1 != 0) gameField.nowColumn - 1 else gameField.nowColumn
-            gameField.setText(gameField.nowRow, gameField.nowColumn, "", prevColumn)
+           keyButtonBackspaceFrame.performClick()
+
+        }
+
+        keyButtonBackspaceFrame.setOnLongClickListener {
+            for (i in 1..6)  {
+                gameField.setText(gameField.nowRow, i, "", 1)
+            }
+            true
+        }
+
+        keyButtonBackspace.setOnLongClickListener {
+            keyButtonBackspaceFrame.performLongClick()
+            true
+        }
+
+        keyButtonBackspace.setOnTouchListener { view, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                keyButtonBackspaceFrame.isPressed = false
+            }
+
+            if (event.action == MotionEvent.ACTION_DOWN)
+            {
+                keyButtonBackspaceFrame.isPressed = true
+            }
+            false
         }
 
     }

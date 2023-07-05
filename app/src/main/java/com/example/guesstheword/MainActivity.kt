@@ -91,9 +91,9 @@ class MainActivity : AppCompatActivity() {
             )
 
             if (linearLayout.size == 0) {
-                layoutParams.setMargins(0, 20.dpToPx(), 24.dpToPx(), 0)
+                layoutParams.setMargins(0, 0, 24.dpToPx(), 20.dpToPx())
             } else {
-                layoutParams.setMargins(24.dpToPx(), 20.dpToPx(), 0, 0)
+                layoutParams.setMargins(24.dpToPx(), 0, 0, 20.dpToPx())
             }
 
             button.layoutParams = layoutParams

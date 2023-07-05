@@ -8,59 +8,67 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/buttonRules"
-            android:layout_width="43dp"
-            android:layout_height="55dp"
-            android:layout_marginRight="16dp"
-            android:background="@null"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/rules" />
-
-        <com.guesstheword.text.Outline.OutlineTextView
-            android:id="@+id/titleRule"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/inter_bold"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="GUESS THE WORD"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="@dimen/text_size_large28"
-            android:textStyle="bold"
-            app:fontFamily="@font/inter_bold" />
+            android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/buttonAccount"
-            android:layout_width="43dp"
-            android:layout_height="55dp"
-            android:layout_marginLeft="16dp"
-            android:background="@null"
-            android:clickable="false"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/account" />
+            <ImageButton
+                android:id="@+id/buttonRules"
+                android:layout_width="43dp"
+                android:layout_height="55dp"
+                android:layout_marginRight="16dp"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/rules" />
+
+            <com.guesstheword.text.Outline.OutlineTextView
+                android:id="@+id/titleRule"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/inter_bold"
+                android:gravity="center_horizontal"
+                android:text="GUESS THE WORD"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_size_large28"
+                android:textStyle="bold"
+                app:fontFamily="@font/inter_bold" />
+
+            <ImageButton
+                android:id="@+id/buttonAccount"
+                android:layout_width="43dp"
+                android:layout_height="55dp"
+                android:layout_marginLeft="16dp"
+                android:background="@null"
+                android:clickable="false"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/account" />
+        </LinearLayout>
     </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -200,7 +208,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <FrameLayout
@@ -241,6 +249,7 @@
                         android:layout_marginLeft="50dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="50dp"
+                        android:layout_marginBottom="20dp"
                         android:background="@drawable/button_selector"
                         android:contentDescription="all"
                         android:fontFamily="@font/inter_bold"

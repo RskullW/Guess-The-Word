@@ -28,9 +28,9 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="16dp"
-                android:background="@null"
                 android:contentDescription="BackMenuFromProfile"
                 android:scaleType="fitCenter"
+                android:background="@null"
                 app:srcCompat="@drawable/back_menu_personal" />
 
             <com.guesstheword.text.Outline.OutlineTextView
@@ -147,7 +147,7 @@
                 android:id="@+id/buttonPlayTelegram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_selector">
+                android:background="@drawable/frame_layout_pressed_selector">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -182,7 +182,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/button_selector">
+                android:background="@drawable/frame_layout_pressed_selector"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"

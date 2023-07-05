@@ -3,8 +3,11 @@ package com.example.guesstheword
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.widget.FrameLayout
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.guesstheword.stats.GameSettings
 import com.guesstheword.text.Outline.OutlineTextView
 
@@ -26,6 +29,8 @@ class ProfileActivity : AppCompatActivity() {
         findViewById<FrameLayout>(R.id.buttonResetStats).setOnClickListener {
             GameSettings.resetStats(this)
             Log.d("ProfileActivity", "reset stats")
+            Toast.makeText(this, "Статистика сброшена", Toast.LENGTH_LONG).show()
+            finish()
         }
 
         findViewById<FrameLayout>(R.id.buttonPlayTelegram).setOnClickListener {
