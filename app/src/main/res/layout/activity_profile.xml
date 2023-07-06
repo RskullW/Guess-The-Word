@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menu_background"
+    android:background="@drawable/background"
     tools:context=".ProfileActivity">
 
     <LinearLayout
@@ -38,13 +38,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="16dp"
-                android:fontFamily="@font/inter_bold"
+                android:layout_marginLeft="16dp"
                 android:text="ПРОФИЛЬ"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="@dimen/text_size_large28"
+                android:fontFamily="@font/pf_play"
+                android:background="@drawable/rounded_title_background"
+                android:textSize="@dimen/text_size_large40"
                 android:textStyle="bold"
-                app:fontFamily="@font/inter_bold" />
+                app:fontFamily="@font/pf_play" />
 
         </LinearLayout>
 
@@ -55,7 +57,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/rounded_game_mode_background">
+            android:background="@drawable/rounded_game_mode_background_mode">
 
             <com.guesstheword.text.Outline.OutlineTextView
                 android:layout_width="wrap_content"
@@ -64,10 +66,11 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:text="Статистика"
+                android:fontFamily="@font/lc_chalk"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
+                android:textColor="#000000"
                 android:textSize="@dimen/text_size_large24"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </FrameLayout>
 
         <FrameLayout
@@ -77,14 +80,14 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/rounded_game_mode_background">
+            android:background="@drawable/rounded_stats_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <com.guesstheword.text.Outline.OutlineTextView
+                <com.guesstheword.text.Outline.OutlineTextViewWhite
                     android:id="@+id/victoryOutlineTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -92,33 +95,36 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:text="Слов угадано: "
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/text_size_large24"
+                    android:fontFamily="@font/pf_play"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_size_large28"
                     android:textStyle="bold" />
 
-                <com.guesstheword.text.Outline.OutlineTextView
+                <com.guesstheword.text.Outline.OutlineTextViewWhite
                     android:id="@+id/defeatOutlineTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp"
                     android:text="Поражений: "
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/text_size_large24"
+                    android:fontFamily="@font/pf_play"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_size_large28"
                     android:textStyle="bold" />
 
-                <com.guesstheword.text.Outline.OutlineTextView
+                <com.guesstheword.text.Outline.OutlineTextViewWhite
                     android:id="@+id/allRoundsOutlineTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginBottom="10dp"
                     android:text="Игр сыграно: "
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/text_size_large24"
+                    android:fontFamily="@font/pf_play"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_size_large28"
                     android:textStyle="bold" />
 
-                <com.guesstheword.text.Outline.OutlineTextView
+                <com.guesstheword.text.Outline.OutlineTextViewWhite
                     android:id="@+id/likeCategoryOutlineTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,8 +132,9 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="20dp"
                     android:text="Любимая категория: "
-                    android:textColor="#FFFFFF"
-                    android:textSize="@dimen/text_size_large20"
+                    android:fontFamily="@font/pf_play"
+                    android:textColor="#000000"
+                    android:textSize="@dimen/text_size_large28"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -147,7 +154,7 @@
                 android:id="@+id/buttonPlayTelegram"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/frame_layout_pressed_selector">
+                android:background="@drawable/button_ready_background">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -165,10 +172,11 @@
                         app:srcCompat="@drawable/telegram" />
 
                     <TextView
+                        android:id="@+id/textPlayTelegram"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/inter_bold"
+                        android:fontFamily="@font/lc_chalk"
                         android:gravity="center_vertical"
                         android:text="Играть в телеграме"
                         android:textColor="#131313"
@@ -182,7 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/frame_layout_pressed_selector"
+                android:background="@drawable/button_ready_background"
                 >
 
                 <LinearLayout
@@ -200,10 +208,11 @@
                         app:srcCompat="@drawable/restart" />
 
                     <TextView
+                        android:id="@+id/textResetStats"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
-                        android:fontFamily="@font/inter_bold"
+                        android:fontFamily="@font/lc_chalk"
                         android:gravity="center_vertical"
                         android:text="Сбросить статистику"
                         android:textColor="#131313"

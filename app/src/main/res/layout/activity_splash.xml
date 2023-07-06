@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menu_background"
+    android:background="@drawable/background"
     tools:context=".SplashActivity">
 
     <LinearLayout
@@ -17,22 +17,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.guesstheword.text.Outline.OutlineTextView
+        <com.guesstheword.text.Outline.OutlineTextViewWhite
             android:id="@+id/splashGradientTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/inter_bold"
-            android:text="GUESS THE WORD"
-            android:textColor="#FFFFFF"
-            android:textSize="@dimen/text_size_large32"
+            android:fontFamily="@font/pf_play"
+            android:text="СЛОВОПОТОК"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_large66"
             android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ProgressBar
             android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="36dp"
             android:indeterminateTint="#2196F3" />
     </LinearLayout>
 

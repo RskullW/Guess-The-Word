@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="text_size_large66">66sp</dimen>
+    <dimen name="text_size_large62">62sp</dimen>
+    <dimen name="text_size_large58">58sp</dimen>
+    <dimen name="text_size_large54">54sp</dimen>
+    <dimen name="text_size_large52">52sp</dimen>
+    <dimen name="text_size_large48">48sp</dimen>
+    <dimen name="text_size_large44">44sp</dimen>
     <dimen name="text_size_large40">40sp</dimen>
     <dimen name="text_size_large36">36sp</dimen>
     <dimen name="text_size_large32">32sp</dimen>
     <dimen name="text_size_large28">28sp</dimen>
     <dimen name="text_size_large24">24sp</dimen>
     <dimen name="text_size_large20">20sp</dimen>
+    <dimen name="text_size_large18">18sp</dimen>
+    <dimen name="text_size_large17">17sp</dimen>
     <dimen name="text_size_large16">16sp</dimen>
+    <dimen name="text_size_large15">15sp</dimen>
     <dimen name="text_size_large14">14sp</dimen>
     <dimen name="text_size_large12">12sp</dimen>
+    <dimen name="text_size_large8">8sp</dimen>
+    <dimen name="text_size_large7">7sp</dimen>
+    <dimen name="text_size_large6">6sp</dimen>
+    <dimen name="text_size_large5">5sp</dimen>
+    <dimen name="text_size_large4">4sp</dimen>
+    <dimen name="text_size_large3">3sp</dimen>
+    <dimen name="text_size_large2">2sp</dimen>
+    <dimen name="text_size_large1">1sp</dimen>
     <dimen name="button_width">141dp</dimen>
     <dimen name="button_height">63dp</dimen>
 

@@ -119,12 +119,13 @@ class GameActivity : AppCompatActivity() {
             fifthRow = fifthRow,
             sixthRow = sixthRow,
             isFinish = false,
+            textSize = resources.getDimensionPixelSize(R.dimen.text_size_large6).toFloat(),
         )
     }
     private fun initializeKeyboard() {
         val keyButtonIds = arrayOf(
             R.id.key1_1, R.id.key1_2, R.id.key1_3, R.id.key1_4, R.id.key1_5, R.id.key1_6, R.id.key1_7, R.id.key1_8, R.id.key1_9,
-            R.id.key1_10, R.id.key1_11, R.id.key1_12, R.id.key1_13, R.id.key2_1, R.id.key2_2, R.id.key2_3, R.id.key2_4, R.id.key2_5,
+            R.id.key1_10, R.id.key1_11, R.id.key1_12, R.id.key2_1, R.id.key2_2, R.id.key2_3, R.id.key2_4, R.id.key2_5,
             R.id.key2_6, R.id.key2_7, R.id.key2_8, R.id.key2_9, R.id.key2_10, R.id.key2_11,
             R.id.key3_1, R.id.key3_2, R.id.key3_3,  R.id.key3_4, R.id.key3_5,R.id.key3_6,R.id.key3_7,R.id.key3_8,R.id.key3_9,
         )
@@ -148,8 +149,8 @@ class GameActivity : AppCompatActivity() {
         }
 
         keyButtonBackspace.setOnClickListener {
-           keyButtonBackspaceFrame.performClick()
-
+            val prevColumn = if (gameField.nowColumn - 1 != 0) gameField.nowColumn - 1 else gameField.nowColumn
+            gameField.setText(gameField.nowRow, gameField.nowColumn, "", prevColumn)
         }
 
         keyButtonBackspaceFrame.setOnLongClickListener {
@@ -172,6 +173,7 @@ class GameActivity : AppCompatActivity() {
             if (event.action == MotionEvent.ACTION_DOWN)
             {
                 keyButtonBackspaceFrame.isPressed = true
+                keyButtonBackspace.performClick()
             }
             false
         }
@@ -241,7 +243,7 @@ class GameActivity : AppCompatActivity() {
             }
 
             Handler().postDelayed({
-                displayVictoryGame()
+                displayStatsGame(true)
             }, 800)
         }
         else {
@@ -290,13 +292,8 @@ class GameActivity : AppCompatActivity() {
 
             if (gameField.nowRow == 6) {
                 setEnabledButtons(false)
-
-                for (column in 1..maxSymbols) {
-                    gameField.setStyleField(gameField.nowRow, column, FieldState.CORRECT)
-                }
-
                 Handler().postDelayed({
-                    displayDefeatGame()
+                    displayStatsGame(false)
                 }, 800)
             }
 
@@ -335,7 +332,6 @@ class GameActivity : AppCompatActivity() {
                         }
                     }
                 } else {
-                    // Error occurred while making the request
                     Log.d("Error: ", "$responseCode")
                 }
             }
@@ -359,33 +355,15 @@ class GameActivity : AppCompatActivity() {
             }
         value.setBackgroundResource(backgroundResId)
     }
-    private fun displayVictoryGame() {
-
-        var finishFrameLayout = findViewById<FrameLayout>(R.id.finishFrameLayout)
-
-        finishFrameLayout.visibility = View.VISIBLE
-
-        setTextForFinishGame(isVictory = true)
-        saveStats(true)
-        var field: GameField = getFieldForFinishWindow()
-
-        for (row in 1..gameField.nowRow) {
-            for (column in 1..maxSymbols) {
-                field.setStyleField(row, column, gameField.getBackgroundStyle(row, column)!!)
-            }
-        }
-
-        setTextTimer()
-    }
-    private fun displayDefeatGame() {
+    private fun displayStatsGame(isVictory: Boolean) {
 
         var finishFrameLayout = findViewById<FrameLayout>(R.id.finishFrameLayout)
         finishFrameLayout.visibility = View.VISIBLE
 
-        setTextForFinishGame(isVictory = false)
+        setTextForFinishGame(isVictory)
 
         var field: GameField = getFieldForFinishWindow()
-        saveStats(false)
+        saveStats(isVictory)
         for (row in 1..gameField.nowRow) {
             for (column in 1..maxSymbols) {
                 field.setStyleField(row, column, gameField.getBackgroundStyle(row, column)!!)
@@ -421,9 +399,10 @@ class GameActivity : AppCompatActivity() {
                 fifthRow = fifthRow,
                 sixthRow = sixthRow,
                 isFinish = true,
-            )
+                textSize = resources.getDimensionPixelSize(R.dimen.text_size_large6).toFloat(),
+                )
 
-        if (gameField.nowRow != 5) {
+        if (gameField.nowRow != 6) {
             fieldTemp.setVisibleField(gameField.nowRow+1, 6, false)
         }
         return fieldTemp

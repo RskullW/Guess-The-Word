@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menu_background"
+    android:background="@drawable/background"
     tools:context=".RulesActivity">
 
     <LinearLayout
@@ -34,13 +34,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="16dp"
-                android:fontFamily="@font/inter_bold"
+                android:layout_marginLeft="16dp"
+                android:fontFamily="@font/pf_play"
+                android:background="@drawable/rounded_title_background"
                 android:text="ПРАВИЛА ИГРЫ"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
-                android:textSize="@dimen/text_size_large28"
+                android:textSize="@dimen/text_size_large40"
                 android:textStyle="bold"
-                app:fontFamily="@font/inter_bold" />
+                app:fontFamily="@font/pf_play" />
 
         </LinearLayout>
 
@@ -51,7 +53,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="20dp"
-            android:background="@drawable/rounded_game_mode_background"
+            android:background="@drawable/rounded_stats_background"
             >
 
             <LinearLayout
@@ -65,12 +67,12 @@
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="7dp"
                     android:layout_marginRight="13dp"
-                    android:fontFamily="@font/inter_bold"
+                    android:fontFamily="@font/lc_chalk"
                     android:inputType="textMultiLine"
-                    android:text="Загадывается слово из 5, 6, 7 или 8 букв. Буквы в слове могут повторяться. Игроку дается 5 попыток, чтобы угадать загаданное слово.\nИгрок вводит слово в поле ввода и нажимает кнопку 'Проверить слово'. Например: ГОРОХ"
-                    android:textColor="#FFFFFF"
+                    android:text="Загадывается слово из 5, 6, 7 или 8 букв. Буквы в слове могут повторяться. Игроку дается 6 попыток, чтобы угадать загаданное слово.\nИгрок вводит слово в поле ввода и нажимает кнопку 'Проверить слово'. Например: ГОРОХ"
+                    android:textColor="#000000"
                     android:textSize="@dimen/text_size_large20"
-                    app:fontFamily="@font/istok_web_bold" />
+                    app:fontFamily="@font/maki_sans" />
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -91,13 +93,13 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/inter_bold"
+                            android:fontFamily="@font/maki_sans"
                             android:text="Г"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="@dimen/text_size_large28"
                             android:textStyle="bold"
-                            app:fontFamily="@font/inter_bold" />
+                            app:fontFamily="@font/lc_chalk" />
                     </FrameLayout>
 
                     <FrameLayout
@@ -113,13 +115,13 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/inter_bold"
+                            android:fontFamily="@font/lc_chalk"
                             android:text="О"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="@dimen/text_size_large28"
                             android:textStyle="bold"
-                            app:fontFamily="@font/inter_bold" />
+                            app:fontFamily="@font/lc_chalk" />
                     </FrameLayout>
 
                     <FrameLayout
@@ -135,13 +137,13 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/inter_bold"
+                            android:fontFamily="@font/lc_chalk"
                             android:text="Р"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="@dimen/text_size_large28"
                             android:textStyle="bold"
-                            app:fontFamily="@font/inter_bold" />
+                            app:fontFamily="@font/lc_chalk" />
                     </FrameLayout>
 
                     <FrameLayout
@@ -157,13 +159,13 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/inter_bold"
+                            android:fontFamily="@font/lc_chalk"
                             android:text="О"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="@dimen/text_size_large28"
                             android:textStyle="bold"
-                            app:fontFamily="@font/inter_bold" />
+                            app:fontFamily="@font/lc_chalk" />
                     </FrameLayout>
 
                     <FrameLayout
@@ -179,13 +181,13 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
-                            android:fontFamily="@font/inter_bold"
+                            android:fontFamily="@font/lc_chalk"
                             android:text="Х"
                             android:textAlignment="center"
                             android:textColor="#000000"
                             android:textSize="@dimen/text_size_large28"
                             android:textStyle="bold"
-                            app:fontFamily="@font/inter_bold" />
+                            app:fontFamily="@font/lc_chalk" />
                     </FrameLayout>
                 </TableRow>
 
@@ -195,13 +197,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="13dp"
                     android:layout_marginTop="7dp"
+                    android:layout_marginBottom="7dp"
                     android:layout_marginRight="13dp"
-                    android:fontFamily="@font/inter_bold"
+                    android:fontFamily="@font/lc_chalk"
                     android:inputType="textMultiLine"
-                    android:text="После нажатия кнопки 'Проверить слово' каждая буква введенного слова будет выделена цветом: Серый цвет: буква отсутствует в загаданном слове. Желтый цвет: буква есть в загаданном слове, но находится на другой позиции. Зеленый цвет: буква угадана и находится в правильной позиции. Если игрок угадывает загаданное слово до истечения 5 попыток, он побеждает. В противном случае, он проигрывает."
-                    android:textColor="#FFFFFF"
+                    android:text="После нажатия кнопки 'Проверить слово' каждая буква введенного слова будет выделена цветом: Серый цвет: буква отсутствует в загаданном слове. Желтый цвет: буква есть в загаданном слове, но находится на другой позиции. Зеленый цвет: буква угадана и находится в правильной позиции. Если игрок угадывает загаданное слово до истечения 6 попыток, он побеждает. В противном случае, он проигрывает."
+                    android:textColor="#000000"
                     android:textSize="@dimen/text_size_large20"
-                    app:fontFamily="@font/istok_web_bold" />
+                    app:fontFamily="@font/maki_sans"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

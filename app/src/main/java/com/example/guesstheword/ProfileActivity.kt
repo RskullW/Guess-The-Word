@@ -3,13 +3,11 @@ package com.example.guesstheword
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.MotionEvent
 import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.guesstheword.stats.GameSettings
-import com.guesstheword.text.Outline.OutlineTextView
+import com.guesstheword.text.Outline.OutlineTextViewWhite
 
 class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,19 +36,18 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
     private fun initializeText() {
-        findViewById<OutlineTextView>(R.id.victoryOutlineTextView).text = "Слов угадано: ${GameSettings.victoryRounds}"
-        findViewById<OutlineTextView>(R.id.defeatOutlineTextView).text = "Поражений: ${GameSettings.defeatRounds}"
-        findViewById<OutlineTextView>(R.id.allRoundsOutlineTextView).text = "Игр сыграно: ${GameSettings.victoryRounds + GameSettings.defeatRounds}"
-
+        findViewById<OutlineTextViewWhite>(R.id.victoryOutlineTextView).text = "Слов угадано: ${GameSettings.victoryRounds}"
+        findViewById<OutlineTextViewWhite>(R.id.defeatOutlineTextView).text = "Поражений: ${GameSettings.defeatRounds}"
+        findViewById<OutlineTextViewWhite>(R.id.allRoundsOutlineTextView).text = "Игр сыграно: ${GameSettings.victoryRounds + GameSettings.defeatRounds}"
 
         val favoriteCategory = GameSettings.categoriesPlayed.maxByOrNull { it.value }?.key
 
         if (favoriteCategory == null) {
-            findViewById<OutlineTextView>(R.id.likeCategoryOutlineTextView).text = "Любимая категория: нет"
+            findViewById<OutlineTextViewWhite>(R.id.likeCategoryOutlineTextView).text = "Любимая категория: нет"
         }
 
         else {
-            findViewById<OutlineTextView>(R.id.likeCategoryOutlineTextView).text = "Любимая категория: $favoriteCategory"
+            findViewById<OutlineTextViewWhite>(R.id.likeCategoryOutlineTextView).text = "Любимая категория: $favoriteCategory"
         }
     }
 }

@@ -28,6 +28,7 @@ class GameField(
     private val context: Context,
     private var gameField: TableLayout,
     private var isFinish: Boolean,
+    private var textSize: Float,
 ) {
     private var numberLine: UShort = 1U
     var nowRow: Int = 1
@@ -111,6 +112,7 @@ class GameField(
         editText.isCursorVisible = !isFinish
         editText.contentDescription = "$row$column"
         editText.setTextColor(Color.BLACK)
+        editText.textSize = textSize
 
         if (row != numberLine.toInt() || isFinish) {
             editText.isEnabled = false
@@ -163,27 +165,21 @@ class GameField(
         }
 
         if (currentBackground != null && newBackground != null) {
-            val duration = 500 // Transition duration in milliseconds
+            val duration = 500
 
-            // Create a TransitionDrawable with the current and new backgrounds
             val transitionDrawable = TransitionDrawable(arrayOf(currentBackground, newBackground))
 
-            // Set the transition duration for the TransitionDrawable
             transitionDrawable.isCrossFadeEnabled = true
             transitionDrawable.startTransition(duration)
 
-            // Set the TransitionDrawable as the background for the cell layout
             cellLayout?.background = transitionDrawable
 
-            // Start the transition animation
             transitionDrawable.startTransition(duration)
 
-            // Apply fade-in effect on the new background
             val alphaAnimation = AlphaAnimation(0f, 1f)
             alphaAnimation.duration = duration.toLong()
             cellLayout?.startAnimation(alphaAnimation)
         } else {
-            // Set the new background directly if there is no current background
             cellLayout?.setBackgroundResource(
                 when (fieldState) {
                     FieldState.CORRECT -> R.drawable.field_correct

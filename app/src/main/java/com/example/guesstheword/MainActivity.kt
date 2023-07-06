@@ -1,10 +1,12 @@
 package com.example.guesstheword
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.Button
@@ -56,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             val buttonRandomWord = findViewById<Button>(buttonIds[iteration])
             val buttonState = ButtonState(button = buttonRandomWord, _isPressed = false)
             mapButtonMode.apply {
-                put("buttonRandomWord${iteration+1}", buttonState)
+                put("buttonRandomWord${iteration + 1}", buttonState)
             }
         }
 
@@ -64,14 +66,13 @@ class MainActivity : AppCompatActivity() {
             buttonState.value.button.setOnClickListener {
                 var value: Boolean = buttonState.value.isPressed
                 buttonState.value.isPressed = !value
+                buttonState.value.button.setTextColor(if (buttonState.value.isPressed) Color.WHITE else Color.BLACK)
 
                 for (button in mapButtonMode) {
                     if (button == buttonState) continue
                     button.value.isPressed = false
                 }
-
                 isSelectMode.value = mapButtonMode.checkState()
-
             }
         }
     }

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="AppButtonStyleLeft" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:background">@drawable/button_selector_categories</item>
         <item name="android:textColor">"#131313"</item>
-        <item name="android:textSize">@dimen/text_size_large16</item>
-        <item name="android:fontFamily">@font/inter_thin</item>
+        <item name="android:textSize">@dimen/text_size_large14</item>
+        <item name="android:fontFamily">@font/lc_chalk</item>
         <item name="android:padding">16dp</item>
         <item name="android:layout_width">141dp</item>
         <item name="android:layout_height">63dp</item>
@@ -14,10 +14,10 @@
         <item name="android:backgroundTint">@null</item>
     </style>
     <style name="AppButtonStyleRight" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/button_selector</item>
+        <item name="android:background">@drawable/button_selector_categories</item>
         <item name="android:textColor">"#131313"</item>
-        <item name="android:textSize">@dimen/text_size_large16</item>
-        <item name="android:fontFamily">@font/inter_thin</item>
+        <item name="android:textSize">@dimen/text_size_large14</item>
+        <item name="android:fontFamily">@font/lc_chalk</item>
         <item name="android:padding">16dp</item>
         <item name="android:layout_width">141dp</item>
         <item name="android:layout_height">63dp</item>
@@ -28,28 +28,28 @@
     </style>
     <style name="EditTextField" parent="Widget.AppCompat.EditText">
         <item name="android:textSize">@dimen/text_size_large24</item>
-        <item name="android:fontFamily">@font/inter_thin</item>
+        <item name="android:fontFamily">@font/lc_chalk</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:color">#000000</item>
     </style>
     <style name="ToastTextView" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/text_size_large16</item>
-        <item name="android:fontFamily">@font/inter_thin</item>
+        <item name="android:fontFamily">@font/lc_chalk</item>
         <item name="android:textStyle">italic</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
     <style name="TimerTextView" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">@dimen/text_size_large28</item>
-        <item name="android:fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">@dimen/text_size_large40</item>
+        <item name="android:fontFamily">@font/pf_play</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
-    <style name="VictoryTextView" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">@dimen/text_size_large28</item>
-        <item name="android:fontFamily">@font/inter_bold</item>
+    <style name="ResultTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/text_size_large48</item>
+        <item name="android:fontFamily">@font/pf_play</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">#FFFFFF</item>

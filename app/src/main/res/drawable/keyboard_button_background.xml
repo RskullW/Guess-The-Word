@@ -11,7 +11,7 @@
 </item>
 <item>
     <shape>
-        <solid android:color="#DFFEF3" />
+        <solid android:color="#CCFFFFFF" />
         <stroke
             android:width="3px"
             android:color="#000000" />

@@ -5,7 +5,7 @@
     android:id="@+id/keyboardLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/menu_background"
+    android:background="@drawable/background"
     tools:context=".GameActivity">
 
     <LinearLayout
@@ -41,19 +41,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="26dp"
                 android:layout_weight="1"
-                android:background="@drawable/button_selector">
-
-                <TextView
+                android:background="@drawable/rounded_title_second_background">
+                <com.guesstheword.text.Outline.OutlineTextView
                     android:id="@+id/titleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/inter_bold"
+                    android:fontFamily="@font/pf_play"
                     android:text="УГАДАЙ СЛОВО"
                     android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/text_size_large24"
-                    android:textStyle="bold" />
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/text_size_large40"
+                    android:textStyle="bold"
+                    />
 
             </FrameLayout>
 
@@ -109,11 +109,9 @@
 
     <TableLayout
         android:id="@+id/keyBoardLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_marginLeft="27dp"
-        android:layout_marginRight="27dp"
         android:layout_marginBottom="60dp"
         android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -124,8 +122,8 @@
             android:id="@+id/firstRowKeyboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
-            android:layout_marginRight="27dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="2dp">
 
             <Button
@@ -137,10 +135,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Й"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Й"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -151,10 +151,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ц"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Ц"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -165,10 +167,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка К"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="У"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -179,10 +183,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка К"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="К"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -193,10 +199,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Е"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Е"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -207,10 +215,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Н"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Н"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -221,10 +231,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Г"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Г"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -235,10 +247,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ш"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Ш"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -249,10 +263,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Щ"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Щ"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -262,11 +278,13 @@
                 android:layout_marginRight="1dp"
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
-                android:contentDescription="Кнопка Щ"
+                android:contentDescription="Кнопка З"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
-                android:text="Щ"
+                android:text="З"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -276,11 +294,13 @@
                 android:layout_marginRight="1dp"
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
-                android:contentDescription="Кнопка З"
+                android:contentDescription="Кнопка Х"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
-                android:text="З"
+                android:text="Х"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -290,25 +310,13 @@
                 android:layout_marginRight="1dp"
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
-                android:contentDescription="Кнопка Х"
-                android:padding="5dp"
-                android:text="Х"
-                android:textColor="#000000"
-                android:textSize="@dimen/text_size_large12"
-                app:backgroundTint="@null" />
-
-            <Button
-                android:id="@+id/key1_13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
-                android:layout_weight="1"
-                android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ъ"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="5dp"
                 android:text="Ъ"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
         </TableRow>
 
@@ -316,9 +324,9 @@
             android:id="@+id/secondRowKeyboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="1dp"
-            android:layout_marginRight="27dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="2dp">
 
             <Button
@@ -329,10 +337,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ф"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Ф"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -343,10 +353,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ы"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Ы"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -357,10 +369,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка В"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="В"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -371,10 +385,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка А"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="А"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -385,10 +401,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка П"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="П"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -399,10 +417,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Р"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Р"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -413,10 +433,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка О"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="О"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -427,10 +449,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Л"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Л"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -441,10 +465,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Д"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Д"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -455,10 +481,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ж"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Ж"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -469,10 +497,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Э"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Э"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
         </TableRow>
 
@@ -480,9 +510,9 @@
             android:id="@+id/thirdRowKeyboard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="27dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="1dp"
-            android:layout_marginRight="27dp"
+            android:layout_marginRight="16dp"
             android:layout_marginBottom="2dp">
 
             <Button
@@ -493,10 +523,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Я"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Я"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -507,10 +539,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ч"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Ч"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -521,10 +555,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка С"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="С"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -535,10 +571,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка М"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="М"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -549,10 +587,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка И"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="И"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -563,10 +603,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Т"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Т"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -577,10 +619,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ь"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Ь"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -591,10 +635,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Б"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Б"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <Button
@@ -605,10 +651,12 @@
                 android:layout_weight="1"
                 android:background="@drawable/keyboard_button_background"
                 android:contentDescription="Кнопка Ю"
+                android:fontFamily="@font/lc_chalk"
                 android:padding="8dp"
                 android:text="Ю"
                 android:textColor="#000000"
                 android:textSize="@dimen/text_size_large12"
+                android:textStyle="bold"
                 app:backgroundTint="@null" />
 
             <FrameLayout
@@ -646,10 +694,10 @@
             android:id="@+id/buttonCheckWord"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="27dp"
-            android:layout_marginRight="27dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/keyboard_check_button_background"
-            android:fontFamily="@font/inter_bold"
+            android:fontFamily="@font/lc_chalk"
             android:text="ПРОВЕРИТЬ СЛОВО"
             android:textColor="#000000"
             android:textSize="@dimen/text_size_large20"
@@ -718,11 +766,11 @@
 
             <com.guesstheword.text.Outline.GradientTextView
                 android:id="@+id/statusGameTextView"
-                style="@style/VictoryTextView"
+                style="@style/ResultTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:paddingBottom="10dp"
                 android:text="Победа" />
 
             <TableLayout
@@ -731,7 +779,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="60dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="1dp"
                 android:layout_marginRight="60dp"
                 android:layout_marginBottom="40dp"
                 android:layout_weight="1">
@@ -786,9 +834,9 @@
                 android:id="@+id/correctWord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/inter_bold"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:fontFamily="@font/lc_chalk"
                 android:text="Правильное слово - ОБЫСК"
                 android:textAlignment="center"
                 android:textColor="#E2E3E0"
@@ -804,7 +852,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="9dp"
                 android:background="@drawable/button_background_finish"
-                android:fontFamily="@font/inter_bold"
+                android:fontFamily="@font/lc_chalk"
                 android:text="ВЕРНУТЬСЯ В МЕНЮ"
                 android:textColor="#E2E3E0"
                 android:textSize="@dimen/text_size_large20"
@@ -819,7 +867,7 @@
                 android:layout_marginRight="40dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/button_background_finish"
-                android:fontFamily="@font/inter_bold"
+                android:fontFamily="@font/lc_chalk"
                 android:text="ПРОДОЛЖИТЬ ИГРУ"
                 android:textColor="#E2E3E0"
                 android:textSize="@dimen/text_size_large20"
