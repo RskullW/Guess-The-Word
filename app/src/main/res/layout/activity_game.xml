@@ -22,19 +22,21 @@
             android:id="@+id/AppBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/buttonBack"
-                android:layout_width="30dp"
-                android:layout_height="31dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="27dp"
                 android:layout_marginRight="11dp"
                 android:background="@null"
                 android:contentDescription="Назад"
+                android:paddingBottom="2dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/back_menu_game" />
+                app:srcCompat="@drawable/back_menu" />
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -42,6 +44,7 @@
                 android:layout_marginRight="26dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_title_second_background">
+
                 <com.guesstheword.text.Outline.OutlineTextView
                     android:id="@+id/titleTextView"
                     android:layout_width="wrap_content"
@@ -52,8 +55,7 @@
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="@dimen/text_size_large40"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </FrameLayout>
 

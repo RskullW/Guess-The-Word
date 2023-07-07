@@ -26,8 +26,8 @@
 
             <ImageButton
                 android:id="@+id/buttonRules"
-                android:layout_width="43dp"
-                android:layout_height="55dp"
+                android:layout_width="50dp"
+                android:layout_height="60dp"
                 android:layout_marginRight="16dp"
                 android:background="@null"
                 android:scaleType="fitCenter"

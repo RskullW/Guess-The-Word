@@ -21,13 +21,13 @@
 
             <ImageButton
                 android:id="@+id/buttonBackMenu"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="16dp"
-                android:contentDescription="BackMainMenu"
                 android:background="@null"
+                android:contentDescription="BackMainMenu"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/back_menu_personal" />
+                app:srcCompat="@drawable/back_menu" />
 
             <com.guesstheword.text.Outline.OutlineTextView
                 android:id="@+id/titleRule"
