@@ -18,7 +18,7 @@ import androidx.core.content.ContextCompat
 
 class GameField(
     private val maxColumns: Int,
-    private val maxRows: Int = 5,
+    private val maxRows: Int = 6,
     private val firstRow: TableRow,
     private val secondRow: TableRow,
     private val thirdRow: TableRow,
@@ -73,7 +73,7 @@ class GameField(
             else -> throw IllegalArgumentException("Invalid row number: $row")
         }
     }
-    fun setVisibleField(startRow: Int, endRow: Int, isVisible: Boolean) {
+    fun setVisibleField(startRow: Int, endRow: Int) {
         for (row in startRow..endRow) {
             val rowLayout = getRowLayout(row)
 
@@ -212,13 +212,6 @@ class GameField(
         nowColumn = 1
         disableAllLine()
 
-    }
-    fun setText(row: Int, column: Int, text: String) {
-        val rowLayout = getRowLayout(row)
-        val cellLayout = rowLayout.getChildAt(column - 1) as? LinearLayout
-        val editText = cellLayout?.getChildAt(0) as? EditText
-        editText?.setText(text)
-        editText?.clearFocus()
     }
     fun setText(row: Int, column: Int, text: String, nextColumn: Int) {
         val rowLayout = getRowLayout(row)

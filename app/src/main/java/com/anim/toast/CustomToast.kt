@@ -32,7 +32,7 @@ object CustomToast {
                 frameLayout.startAnimation(anim)
                 frameLayout.visibility = View.GONE
                 isToastVisible = false
-            }, millis.toLong() * 4)
+            }, millis.toLong())
         }
     }
 }

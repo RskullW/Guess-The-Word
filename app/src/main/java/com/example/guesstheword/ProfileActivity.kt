@@ -1,5 +1,7 @@
 package com.example.guesstheword
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -32,8 +34,14 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         findViewById<FrameLayout>(R.id.buttonPlayTelegram).setOnClickListener {
+            val telegramLink = "http://t.me/wordleongolangbot"
 
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(telegramLink)
+
+            startActivity(intent)
         }
+
     }
     private fun initializeText() {
         findViewById<OutlineTextViewWhite>(R.id.victoryOutlineTextView).text = "Слов угадано: ${GameSettings.victoryRounds}"

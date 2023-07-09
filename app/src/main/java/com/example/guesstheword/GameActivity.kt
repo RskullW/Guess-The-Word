@@ -68,7 +68,6 @@ class GameActivity : AppCompatActivity() {
     private fun initializeButtonFinish() {
         var buttonExitMenu = findViewById<Button>(R.id.exitMenuButton)
         var buttonContinue = findViewById<Button>(R.id.continueButton)
-        var buttonBack = findViewById<ImageButton>(R.id.buttonBack)
 
         buttonExitMenu.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -79,12 +78,6 @@ class GameActivity : AppCompatActivity() {
         buttonContinue.setOnClickListener {
             GameSettings.findWord()
             val intent = Intent(this, GameActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-        }
-
-        buttonBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
@@ -403,7 +396,7 @@ class GameActivity : AppCompatActivity() {
                 )
 
         if (gameField.nowRow != 6) {
-            fieldTemp.setVisibleField(gameField.nowRow+1, 6, false)
+            fieldTemp.setVisibleField(gameField.nowRow+1, 6)
         }
         return fieldTemp
     }
@@ -431,6 +424,7 @@ class GameActivity : AppCompatActivity() {
         val layout: FrameLayout = findViewById<FrameLayout>(R.id.toastFrameLayout)
         val textView: TextView = layout.findViewById(R.id.toastTextView)
 
+        CustomToast.setDuration(4000)
         CustomToast.start(message, layout, textView, this)
     }
 
