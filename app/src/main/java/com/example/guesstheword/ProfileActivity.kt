@@ -34,7 +34,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         findViewById<FrameLayout>(R.id.buttonPlayTelegram).setOnClickListener {
-            val telegramLink = "http://t.me/wordleongolangbot"
+            val telegramLink = "http://t.me/slovopotokbot"
 
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(telegramLink)
